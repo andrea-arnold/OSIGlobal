@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSI Global — Service First. Engineered Throughout.</title>
+<meta name="description" content="OSI Global is a service-first IT infrastructure company. Engineer-led third-party maintenance (SYSTAIN), optical solutions, hardware, and ITAD. Privately owned since 2008. Gartner-recognized. No L1 runaround.">
+
+<!-- BRAND TYPOGRAPHY: Mukta (primary) from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/*
+ * ============================================================
+ * OSI GLOBAL BRAND GUIDELINES — COLOR REFERENCE
+ * Deep Green:  #0f8140  (primary — headers, CTAs, key UI)
+ * Lime Green:  #8dc63f  (secondary — accents, icons, Systain)
+ * Yellow:      #ffe601  (accent only — highlights, alerts, sparingly)
+ * Near Black:  #141414  (primary text, headings)
+ * Gray:        #666666  (secondary text, captions)
+ *
+ * TYPOGRAPHY: Mukta (primary), Verdana (fallback)
+ * Min body: 14px  |  Line-height: 1.5x  |  Sentence case headings
+ * ============================================================
+ */
+
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Mukta',Verdana,Geneva,sans-serif;
+  color:#666666;
+  line-height:1.5;
+  background:#fff;
+  overflow-x:hidden;
+  font-weight:400;
+  font-size:1rem; /* 16px — above 14px minimum */
+}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:color .2s}
+ul{list-style:none}
+h1,h2,h3,h4,h5,h6{color:#141414;line-height:1.25;font-weight:700}
+h1{font-size:2.75rem}
+h2{font-size:2.1rem;font-weight:700}
+h3{font-size:1.5rem;font-weight:600}
+h4{font-size:1.15rem;font-weight:600}
+p{margin-bottom:1rem}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ===== UTILITY ===== */
+.text-center{text-align:center}
+.text-white{color:#fff}
+.text-white h1,.text-white h2,.text-white h3,.text-white h4,.text-white p,.text-white li,.text-white span,.text-white td,.text-white th{color:#fff}
+.bg-dark{background:#1B1B1B;color:#fff}
+.bg-light{background:#F7F9FB}
+.bg-white{background:#fff}
+.accent{color:#8dc63f} /* Lime Green — secondary */
+.section{padding:80px 0}
+.section-sm{padding:50px 0}
+.mb-1{margin-bottom:.5rem}.mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}.mb-4{margin-bottom:2rem}.mb-5{margin-bottom:3rem}
+.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-block;padding:14px 32px;border-radius:4px;font-size:.95rem;font-weight:600;cursor:pointer;border:none;transition:all .25s;font-family:inherit;text-align:center}
+.btn-primary{background:#0f8140;color:#fff} /* Deep Green */
+.btn-primary:hover{background:#0a6932}
+.btn-outline{background:transparent;color:#fff;border:2px solid #8dc63f} /* Lime Green border */
+.btn-outline:hover{background:#8dc63f;color:#141414}
+.btn-outline-dark{background:transparent;color:#0f8140;border:2px solid #0f8140}
+.btn-outline-dark:hover{background:#0f8140;color:#fff}
+.btn-white{background:#fff;color:#0f8140}
+.btn-white:hover{background:#F7F9FB}
+.btn-sm{padding:10px 22px;font-size:.875rem}
+.btn-group{display:flex;gap:16px;flex-wrap:wrap}
+.btn-group.center{justify-content:center}
+
+/* ===== HEADER / NAV ===== */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:background .3s}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:75px;max-width:1200px;margin:0 auto;padding:0 20px}
+.logo img{height:45px;width:auto}
+.nav{display:flex;align-items:center;gap:0}
+.nav-item{position:relative;padding:0 16px;height:75px;display:flex;align-items:center}
+.nav-item>a,.nav-item>span{font-size:.875rem;font-weight:600;color:#141414;cursor:pointer;display:flex;align-items:center;gap:4px;height:100%}
+.nav-item>a:hover,.nav-item>span:hover{color:#0f8140}
+.nav-arrow{font-size:.6rem;transition:transform .2s}
+.dropdown{position:absolute;top:100%;left:0;min-width:260px;background:#fff;box-shadow:0 8px 30px rgba(0,0,0,.12);border-radius:0 0 6px 6px;opacity:0;visibility:hidden;transform:translateY(-5px);transition:all .25s;padding:10px 0;z-index:100}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown a{display:block;padding:10px 22px;font-size:.875rem;color:#141414;font-weight:400;transition:all .15s}
+.dropdown a:hover{background:#F7F9FB;color:#0f8140}
+.nav-cta .btn{padding:10px 24px;font-size:.875rem}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none}
+.hamburger span{width:26px;height:3px;background:#141414;border-radius:2px;transition:all .3s}
+
+/* ===== HERO ===== */
+.hero{padding:160px 0 100px;position:relative;overflow:hidden}
+.hero-dark{background:linear-gradient(135deg,#1B1B1B 0%,#2d2d2d 50%,#1B1B1B 100%)}
+.hero-pattern{position:absolute;top:0;right:0;width:50%;height:100%;opacity:.06;background:repeating-linear-gradient(45deg,transparent,transparent 30px,#8dc63f 30px,#8dc63f 31px)}
+.hero-content{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.hero h1{font-size:3rem;margin-bottom:1rem;position:relative;font-weight:800}
+.hero .hero-sub{font-size:1.1rem;max-width:620px;margin-bottom:2rem;position:relative;opacity:.9;line-height:1.6;font-weight:300}
+
+/* ===== LIVE TICKER ===== */
+.live-ticker{background:rgba(20,20,20,.85);border:1px solid #333;border-radius:10px;padding:28px 30px;font-family:'Courier New',Courier,monospace;position:relative}
+.ticker-header{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:#8dc63f;margin-bottom:18px;font-weight:700}
+.ticker-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem}
+.ticker-row:last-of-type{border-bottom:none}
+.ticker-time{color:#8dc63f;font-weight:700;width:50px;flex-shrink:0}
+.ticker-event{color:#e0e0e0;flex:1;margin:0 15px}
+.ticker-loc{color:#888;font-size:.75rem;text-align:right;flex-shrink:0}
+.ticker-status{margin-top:18px;padding-top:14px;border-top:1px solid #333;font-size:.7rem;letter-spacing:2px;text-transform:uppercase}
+.ticker-status .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#8dc63f;margin-right:8px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ===== PILLARS ===== */
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.pillar-card{background:#fff;border-radius:8px;padding:35px 25px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s;border-top:4px solid transparent;cursor:default}
+.pillar-card:hover{transform:translateY(-6px);box-shadow:0 8px 35px rgba(0,0,0,.12);border-top-color:#0f8140} /* Deep Green on hover */
+.pillar-icon{width:70px;height:70px;margin:0 auto 20px;background:#0f8140;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff} /* Deep Green bg per iconography guidelines */
+.pillar-card h3{margin-bottom:.75rem;font-size:1.2rem;font-weight:700}
+.pillar-card p{font-size:.9rem;color:#666666;margin-bottom:1rem}
+
+/* ===== CARDS ===== */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.card-grid-2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border-radius:8px;padding:30px;box-shadow:0 3px 15px rgba(0,0,0,.06);transition:all .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 6px 25px rgba(0,0,0,.1)}
+.card h4{margin-bottom:.5rem;color:#141414} /* Force Near Black on cards inside dark sections */
+.card p{font-size:.9rem;color:#666666} /* Force Gray on cards inside dark sections */
+.card-icon{font-size:2rem;margin-bottom:15px;color:#0f8140} /* Deep Green icons */
+
+/* ===== STATS BAR ===== */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.stat-item .stat-number{font-size:2.5rem;font-weight:800;color:#0f8140;margin-bottom:.25rem} /* Deep Green for primary stat numbers */
+.stat-item .stat-label{font-size:.9rem;color:#666666;font-weight:400}
+.bg-dark .stat-item .stat-number{color:#8dc63f} /* Lime Green on dark backgrounds */
+.bg-dark .stat-item .stat-label{color:#ccc}
+
+/* ===== COMPARISON TABLE ===== */
+.comparison-table{width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,.06)}
+.comparison-table thead th{background:#0f8140;color:#fff;padding:16px 20px;font-size:.875rem;text-align:center;font-weight:600} /* Deep Green header */
+.comparison-table thead th:first-child{text-align:left}
+.comparison-table tbody td{padding:14px 20px;border-bottom:1px solid #eee;font-size:.88rem;text-align:center}
+.comparison-table tbody td:first-child{font-weight:600;color:#141414;text-align:left}
+.comparison-table tbody tr:nth-child(even){background:#F7F9FB}
+.comparison-table tbody tr:hover{background:#f0f4f0}
+.check{color:#0f8140;font-weight:700;font-size:1.1rem}
+.cross{color:#cc3333;font-weight:700;font-size:1.1rem}
+.partial{color:#f0a500;font-weight:700}
+.table-wrapper{overflow-x:auto}
+
+/* ===== MANIFESTO ===== */
+.manifesto-list{list-style:none;padding:0;max-width:700px;margin:0 auto}
+.manifesto-list li{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:1rem;line-height:1.6;font-weight:300}
+.manifesto-list li:last-child{border-bottom:none}
+.manifesto-num{color:#8dc63f;font-weight:700;font-size:.875rem;flex-shrink:0;width:24px}
+
+/* ===== TESTIMONIAL ===== */
+.testimonial-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.testimonial{background:#F7F9FB;border-left:4px solid #0f8140;padding:30px 35px;border-radius:0 8px 8px 0;font-style:italic;font-size:1rem;line-height:1.6;font-weight:400} /* Deep Green left border */
+.testimonial-author{font-style:normal;font-weight:700;color:#141414;margin-top:12px;font-size:.875rem}
+
+/* ===== LOGO STRIP ===== */
+.logo-strip{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:35px;padding:30px 0}
+.logo-strip-item{font-size:1rem;font-weight:700;color:#999;opacity:.7;transition:opacity .2s}
+.logo-strip-item:hover{opacity:1;color:#141414}
+
+/* ===== FORMS ===== */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:.875rem;font-weight:600;color:#141414;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:1px solid #ddd;border-radius:4px;font-size:.9rem;font-family:inherit;transition:border .2s;background:#fff}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#0f8140;box-shadow:0 0 0 3px rgba(15,129,64,.15)} /* Deep Green focus ring */
+.form-group textarea{resize:vertical;min-height:120px}
+.contact-info-sidebar{display:flex;flex-direction:column;gap:20px}
+.contact-detail{display:flex;gap:15px;align-items:flex-start}
+.contact-detail .cd-icon{width:44px;height:44px;background:#0f8140;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0}
+.contact-detail .cd-text{font-size:.9rem}
+.contact-detail .cd-text strong{display:block;color:#141414;margin-bottom:2px}
+
+/* ===== SECTION LABEL ===== */
+/* Brand note: ALL CAPS allowed for short labels and acronyms per typography rules */
+.section-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:#8dc63f;font-weight:700;margin-bottom:12px}
+
+/* ===== FOOTER ===== */
+.footer{background:#111;color:#aaa;padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-col h4{color:#fff;font-size:.95rem;margin-bottom:20px;font-weight:600}
+.footer-col a{display:block;font-size:.875rem;padding:4px 0;color:#aaa;transition:color .2s;font-weight:400}
+.footer-col a:hover{color:#8dc63f}
+.footer-logo img{height:40px;filter:brightness(0) invert(1);margin-bottom:15px}
+.footer-col p{font-size:.875rem;line-height:1.5}
+.footer-bottom{border-top:1px solid #333;padding-top:25px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:.8rem;margin:0}
+.social-links{display:flex;gap:12px}
+.social-links a{width:36px;height:36px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;color:#aaa;transition:all .2s;font-size:.875rem}
+.social-links a:hover{background:#0f8140;color:#fff} /* Deep Green on hover */
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.hero-content{grid-template-columns:1fr}
+.live-ticker{max-width:500px}
+.pillars-grid{grid-template-columns:repeat(2,1fr)}
+.card-grid{grid-template-columns:repeat(2,1fr)}
+.testimonial-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:repeat(3,1fr)}
+.stats-bar{grid-template-columns:repeat(2,1fr);gap:25px}
+h1{font-size:2.2rem}
+.hero h1{font-size:2.5rem}
+.contact-layout{grid-template-columns:1fr !important}
+}
+@media(max-width:768px){
+.nav{display:none}
+.hamburger{display:flex}
+.hero{padding:120px 0 60px}
+.section{padding:50px 0}
+.pillars-grid{grid-template-columns:1fr}
+.card-grid{grid-template-columns:1fr}
+.card-grid-2{grid-template-columns:1fr}
+.stats-bar{grid-template-columns:1fr;gap:20px}
+.footer-grid{grid-template-columns:1fr 1fr}
+.form-grid{grid-template-columns:1fr}
+h1{font-size:1.8rem}
+h2{font-size:1.6rem}
+.hero h1{font-size:2rem}
+.btn-group{flex-direction:column;align-items:flex-start}
+.footer-bottom{flex-direction:column;text-align:center}
+.comparison-table thead th,.comparison-table tbody td{padding:10px 12px;font-size:.78rem}
+}
+@media(max-width:480px){
+.footer-grid{grid-template-columns:1fr}
+.header-inner{height:65px}
+.logo img{height:35px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+<div class="header-inner">
+<a href="#" class="logo"><img src="https://osiglobal.com/wp-content/uploads/2024/07/OSI_Global_logo.png" alt="OSI Global"></a>
+<nav class="nav">
+<div class="nav-item">
+<span>Third-party maintenance <span class="nav-arrow">&#9660;</span></span>
+<div class="dropdown">
+<a href="#">Systain overview</a>
+<a href="#">Supported equipment</a>
+<a href="#">Dell</a>
+<a href="#">HPE</a>
+<a href="#">Cisco</a>
+<a href="#">Juniper</a>
+<a href="#">NetApp</a>
+<a href="#">IBM</a>
+</div>
+</div>
+<div class="nav-item">
+<span>Optical solutions <span class="nav-arrow">&#9660;</span></span>
+<div class="dropdown">
+<a href="#">Overview</a>
+<a href="#">Cisco</a>
+<a href="#">Juniper</a>
+<a href="#">Arista</a>
+<a href="#">Ciena</a>
+<a href="#">Alcatel/Nokia</a>
+<a href="#">Dell</a>
+<a href="#">HPE</a>
+</div>
+</div>
+<div class="nav-item"><a href="#">Hardware</a></div>
+<div class="nav-item"><a href="#">Data center services</a></div>
+<div class="nav-item"><a href="#">About</a></div>
+<div class="nav-item nav-cta"><a href="#contact" class="btn btn-primary btn-sm">Get a quote</a></div>
+</nav>
+<button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 1: HERO -->
+<!-- ============================================================ -->
+<section class="hero hero-dark">
+<div class="hero-pattern"></div>
+<div class="container">
+<div class="hero-content">
+<div>
+<div class="section-label">Service first. Engineered throughout.</div>
+<h1 class="text-white">Enterprise IT infrastructure,<br>without the <em style="font-style:italic;color:#8dc63f">runaround.</em></h1>
+<p class="hero-sub text-white">Maintenance, optics, hardware, and data center services -- from one privately-owned partner, delivered by the engineers who will also answer when it breaks.</p>
+<div class="btn-group">
+<a href="#" class="btn btn-primary">Explore Systain TPM &rarr;</a>
+<a href="#" class="btn btn-outline">Explore optical solutions &rarr;</a>
+</div>
+</div>
+<!-- LIVE TICKER -->
+<div class="live-ticker">
+<div class="ticker-header">Right now, somewhere</div>
+<div class="ticker-row"><span class="ticker-time">02:14</span><span class="ticker-event">CCIE on-call</span><span class="ticker-loc">Denver DC</span></div>
+<div class="ticker-row"><span class="ticker-time">02:16</span><span class="ticker-event">NCDA responding</span><span class="ticker-loc">Frankfurt</span></div>
+<div class="ticker-row"><span class="ticker-time">02:19</span><span class="ticker-event">QSFP28 shipped</span><span class="ticker-loc">Dallas depot</span></div>
+<div class="ticker-row"><span class="ticker-time">02:22</span><span class="ticker-event">HPE ASE dispatched</span><span class="ticker-loc">Austin</span></div>
+<div class="ticker-row"><span class="ticker-time">02:25</span><span class="ticker-event">Optic compatibility verified</span><span class="ticker-loc">Lab &mdash; Santa Barbara</span></div>
+<div class="ticker-row"><span class="ticker-time">02:28</span><span class="ticker-event">Smart hands dispatched</span><span class="ticker-loc">Chicago</span></div>
+<div class="ticker-row"><span class="ticker-time">02:31</span><span class="ticker-event">JNCIP resolved P1</span><span class="ticker-loc">Tokyo</span></div>
+<div class="ticker-status"><span class="dot"></span>Operational &middot; All regions &middot; 24/7</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 2: VENDOR STRIP -->
+<!-- ============================================================ -->
+<section class="section-sm bg-light">
+<div class="container text-center">
+<div class="section-label" style="color:#666666">One contract &middot; Every major vendor</div>
+<div class="logo-strip" style="margin-top:10px">
+<span class="logo-strip-item">Dell</span>
+<span class="logo-strip-item">HPE</span>
+<span class="logo-strip-item">Cisco</span>
+<span class="logo-strip-item">NetApp</span>
+<span class="logo-strip-item">IBM</span>
+<span class="logo-strip-item">Juniper</span>
+<span class="logo-strip-item">Lenovo</span>
+<span class="logo-strip-item">Arista</span>
+<span class="logo-strip-item">Supermicro</span>
+<span class="logo-strip-item">Ciena</span>
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 3: FOUR SERVICES, ONE STANDARD -->
+<!-- ============================================================ -->
+<section class="section bg-white">
+<div class="container">
+<h2 class="text-center mb-3">Four services. One standard.</h2>
+<p class="text-center mb-5" style="max-width:700px;margin-left:auto;margin-right:auto">Every product we deliver is wrapped in the same commitment: expert guidance before the sale, flawless execution during delivery, and dedicated support for the life of the relationship.</p>
+<div class="pillars-grid">
+
+<div class="pillar-card">
+<div class="pillar-icon">&#9881;</div>
+<h3>Maintain</h3>
+<h4 class="accent mb-2">Systain TPM</h4>
+<p>You call, an engineer answers. They know your environment. They fix it. No L1 scripts, no escalation delays, no runaround. Third-party maintenance the way it should work.</p>
+<a href="#" class="btn btn-sm btn-outline-dark">Learn more</a>
+</div>
+
+<div class="pillar-card">
+<div class="pillar-icon">&#128268;</div>
+<h3>Connect</h3>
+<h4 class="accent mb-2">Optical solutions</h4>
+<p>10,975+ MSA-compliant transceivers, lab-tested against real switches before they ship. Technical consultation, compatibility verification, lifetime warranty, and overnight replacement.</p>
+<a href="#" class="btn btn-sm btn-outline-dark">Learn more</a>
+</div>
+
+<div class="pillar-card">
+<div class="pillar-icon">&#128421;</div>
+<h3>Equip</h3>
+<h4 class="accent mb-2">Hardware</h4>
+<p>Pre-configured, pre-tested, pre-supported. Every piece of hardware is graded, warranted, and backed by a team that stays with you long after the invoice.</p>
+<a href="#" class="btn btn-sm btn-outline-dark">Learn more</a>
+</div>
+
+<div class="pillar-card">
+<div class="pillar-icon">&#128736;</div>
+<h3>Deploy &amp; retire</h3>
+<h4 class="accent mb-2">Data center services</h4>
+<p>Relocation, smart hands, IT deployment, infrastructure audits, ITAD, and certified data destruction. PMP-certified project managers and engineers across 100+ countries.</p>
+<a href="#" class="btn btn-sm btn-outline-dark">Learn more</a>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 4: WHY OSI GLOBAL -->
+<!-- ============================================================ -->
+<section class="section bg-dark text-white">
+<div class="container">
+<div class="section-label">Why OSI Global</div>
+<h2 class="text-white mb-3">Built on the radical idea that service is the product.</h2>
+<p class="mb-5" style="max-width:750px;opacity:.85;line-height:1.6">Everyone sells hardware. Everyone sells optics. The difference -- and the reason companies stay with us for 10+ years -- is what happens at 2:14 AM when something goes wrong.</p>
+
+<div class="card-grid card-grid-2" style="gap:25px">
+
+<!-- TPM proof points -->
+<div class="card">
+<div class="card-icon">&#128222;</div>
+<h4>Engineers answer the phone.</h4>
+<p>First call reaches a CCIE, NCDA, JNCIP or HPE ASE-certified engineer. No L1 queue. No "let me transfer you." They have your configuration already.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#9898;</div>
+<h4>One contract, every vendor.</h4>
+<p>Dell, HPE, Cisco, NetApp, IBM, Juniper, Lenovo, Arista, Supermicro -- coverage consolidates under Systain with a single renewal and a single dashboard.</p>
+</div>
+
+<!-- Optics proof points -->
+<div class="card">
+<div class="card-icon">&#128300;</div>
+<h4>Every optic is lab-tested before it ships.</h4>
+<p>We don't sell from a catalog and hope. Every transceiver runs against real switch hardware in our lab. You get compatibility verification, not a gamble.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#128268;</div>
+<h4>Optical engineers on your account.</h4>
+<p>Need a DWDM design review? Compatibility confirmation for a legacy platform? Our optical engineering team consults before you buy and supports after you deploy.</p>
+</div>
+
+<!-- Shared proof points -->
+<div class="card">
+<div class="card-icon">&#9201;</div>
+<h4>Coverage past EOSL.</h4>
+<p>When the OEM end-of-supports your hardware, we don't. Most fleets have 3-7 years of life left. We help you run them profitably.</p>
+</div>
+<div class="card">
+<div class="card-icon">&#127968;</div>
+<h4>Privately owned. Customer-answerable.</h4>
+<p>No private equity. No board demanding quarterly growth at your expense. We've been independently owned since 2008. We answer to customers, not investors.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 5: STATS BAR -->
+<!-- ============================================================ -->
+<section class="section-sm bg-light">
+<div class="container">
+<div class="stats-bar">
+<div class="stat-item"><div class="stat-number">99.7%</div><div class="stat-label">SLA achievement rate</div></div>
+<div class="stat-item"><div class="stat-number">10,975+</div><div class="stat-label">MSA-compliant optics in stock</div></div>
+<div class="stat-item"><div class="stat-number">42</div><div class="stat-label">Global forward-stocking depots</div></div>
+<div class="stat-item"><div class="stat-number">0</div><div class="stat-label">L1 agents on staff</div></div>
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 6: COMPARISON TABLE -->
+<!-- ============================================================ -->
+<section class="section bg-white">
+<div class="container">
+<h2 class="text-center mb-3">Service, actually compared.</h2>
+<p class="text-center mb-5" style="max-width:700px;margin-left:auto;margin-right:auto">What it looks like when a service company competes against product companies. Benchmarked against typical OEM support and PE-backed providers.</p>
+<div class="table-wrapper">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>Service experience</th>
+<th>OSI Global</th>
+<th>OEM support</th>
+<th>PE-backed providers</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>First call reaches a certified engineer</td><td class="check">&#10003;</td><td class="cross">&#10007; (L1 first)</td><td class="partial">Varies (declining)</td></tr>
+<tr><td>Your environment is pre-loaded at call pickup</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td></tr>
+<tr><td>One contract covers every major vendor</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="partial">Limited</td></tr>
+<tr><td>Lab-tested optics with compatibility verification</td><td class="check">&#10003;</td><td class="partial">OEM-branded only</td><td class="cross">&#10007;</td></tr>
+<tr><td>Optical engineer consultation included</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td></tr>
+<tr><td>Support continues past OEM end-of-service-life</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="check">&#10003;</td></tr>
+<tr><td>4-hour parts dispatch from local depots</td><td class="check">&#10003;</td><td class="check">&#10003; (premium)</td><td class="partial">Limited</td></tr>
+<tr><td>Lifetime warranty on optics</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="partial">Varies</td></tr>
+<tr><td>Privately owned / customer-first</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007; (PE-owned)</td></tr>
+<tr><td>Full lifecycle (TPM + optics + HW + data center services)</td><td class="check">&#10003;</td><td class="cross">&#10007;</td><td class="cross">&#10007;</td></tr>
+<tr><td>Average cost vs. OEM</td><td class="check">40-70% less</td><td>Baseline</td><td class="check">20-40% less</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 7: THE MANIFESTO -->
+<!-- ============================================================ -->
+<section class="section bg-dark text-white">
+<div class="container text-center">
+<h2 class="text-white mb-5">The OSI Global service manifesto</h2>
+<ul class="manifesto-list">
+<li><span class="manifesto-num">01</span> An engineer answers the phone -- always.</li>
+<li><span class="manifesto-num">02</span> Your configuration is known before you describe it.</li>
+<li><span class="manifesto-num">03</span> The person who takes your call can fix it.</li>
+<li><span class="manifesto-num">04</span> Hardware stays in service until you decide otherwise.</li>
+<li><span class="manifesto-num">05</span> Service is the product -- everything else is logistics.</li>
+</ul>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 8: TESTIMONIALS -->
+<!-- ============================================================ -->
+<section class="section bg-white">
+<div class="container">
+<h2 class="text-center mb-5">What customers say.</h2>
+<div class="testimonial-grid">
+<div class="testimonial">
+"The engineer who answered had already pulled up our configuration and was troubleshooting before I finished describing the symptom. That doesn't happen with OEM support."
+<div class="testimonial-author">-- VP of IT Operations, Mid-market Healthcare</div>
+</div>
+<div class="testimonial">
+"We consolidated seven maintenance contracts into one Systain agreement and cut our spend by 54%. Response times went up, not down."
+<div class="testimonial-author">-- Director of Infrastructure, Enterprise Retail</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 9: RECENT ARTICLES -->
+<!-- Source: Current osiglobal.com homepage articles -->
+<!-- ============================================================ -->
+<section class="section bg-light">
+<div class="container">
+<h2 class="text-center mb-5">Recent articles</h2>
+<div style="display:flex;gap:8px;justify-content:center;margin-bottom:35px;flex-wrap:wrap">
+<button class="tab-btn active" onclick="filterArticles('all',this)">All</button>
+<button class="tab-btn" onclick="filterArticles('blog',this)">Blog</button>
+<button class="tab-btn" onclick="filterArticles('news',this)">News</button>
+<button class="tab-btn" onclick="filterArticles('case-study',this)">Case studies</button>
+</div>
+<div class="card-grid" id="articles-grid">
+
+<div class="card article-card" data-cat="blog">
+<div style="font-size:.75rem;color:#0f8140;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Blog</div>
+<h4 style="margin-bottom:6px">Understanding optical transceivers: a comprehensive guide</h4>
+<p style="font-size:.8rem;color:#999;margin-bottom:8px">March 2, 2026</p>
+<p>A deep dive into optical transceiver types, compatibility, and how to choose the right optic for your network infrastructure.</p>
+<a href="#" style="color:#0f8140;font-weight:600;font-size:.875rem">Read more &rarr;</a>
+</div>
+
+<div class="card article-card" data-cat="news">
+<div style="font-size:.75rem;color:#0f8140;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">News</div>
+<h4 style="margin-bottom:6px">OSI Global to attend NANOG 96 in San Francisco</h4>
+<p style="font-size:.8rem;color:#999;margin-bottom:8px">January 28, 2026</p>
+<p>Continuing a longstanding commitment to the NANOG community with our optical engineering and networking teams.</p>
+<a href="#" style="color:#0f8140;font-weight:600;font-size:.875rem">Read more &rarr;</a>
+</div>
+
+<div class="card article-card" data-cat="blog">
+<div style="font-size:.75rem;color:#0f8140;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Blog</div>
+<h4 style="margin-bottom:6px">2026 TPM trends &amp; market predictions: what's changing and why it matters</h4>
+<p style="font-size:.8rem;color:#999;margin-bottom:8px">January 8, 2026</p>
+<p>Key shifts in the third-party maintenance market and what they mean for enterprise IT decision-makers.</p>
+<a href="#" style="color:#0f8140;font-weight:600;font-size:.875rem">Read more &rarr;</a>
+</div>
+
+<div class="card article-card" data-cat="case-study">
+<div style="font-size:.75rem;color:#0f8140;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Case study</div>
+<h4 style="margin-bottom:6px">How OSI Global completed a data center relocation ahead of schedule and under budget</h4>
+<p style="font-size:.8rem;color:#999;margin-bottom:8px">March 29, 2025</p>
+<p>A telecom giant needed a full data center move with zero downtime tolerance. Here's how we delivered.</p>
+<a href="#" style="color:#0f8140;font-weight:600;font-size:.875rem">Read more &rarr;</a>
+</div>
+
+<div class="card article-card" data-cat="case-study">
+<div style="font-size:.75rem;color:#0f8140;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Case study</div>
+<h4 style="margin-bottom:6px">Modernizing tribal infrastructure with cost-effective IT solutions</h4>
+<p style="font-size:.8rem;color:#999;margin-bottom:8px">March 29, 2025</p>
+<p>How a tribal organization modernized aging IT infrastructure while maintaining budget discipline.</p>
+<a href="#" style="color:#0f8140;font-weight:600;font-size:.875rem">Read more &rarr;</a>
+</div>
+
+<div class="card article-card" data-cat="case-study">
+<div style="font-size:.75rem;color:#0f8140;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Case study</div>
+<h4 style="margin-bottom:6px">From legacy to future ready: IT transformation in manufacturing</h4>
+<p style="font-size:.8rem;color:#999;margin-bottom:8px">September 25, 2025</p>
+<p>A manufacturing firm transitioned from legacy systems to a modern, supported infrastructure with OSI Global.</p>
+<a href="#" style="color:#0f8140;font-weight:600;font-size:.875rem">Read more &rarr;</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<style>
+.tab-btn{background:transparent;border:1px solid #ddd;border-radius:20px;padding:8px 20px;font-size:.85rem;font-weight:600;color:#666;cursor:pointer;font-family:inherit;transition:all .2s}
+.tab-btn:hover{border-color:#0f8140;color:#0f8140}
+.tab-btn.active{background:#0f8140;color:#fff;border-color:#0f8140}
+.article-card.hidden{display:none}
+</style>
+<script>
+function filterArticles(cat,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.article-card').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat){c.classList.remove('hidden')}
+    else{c.classList.add('hidden')}
+  });
+}
+</script>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 10: FAQ -->
+<!-- Source: Current osiglobal.com homepage FAQs -->
+<!-- ============================================================ -->
+<section class="section bg-white">
+<div class="container">
+<h2 class="text-center mb-5">OSI Global FAQs</h2>
+<div style="max-width:800px;margin:0 auto">
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Who is OSI Global?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">OSI Global is a privately owned IT infrastructure provider that helps enterprises manage, extend the life of, and retire their hardware through third-party maintenance (TPM), optical solutions, professional data center services, and IT asset disposition (ITAD).</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What types of IT services does OSI Global provide?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">OSI Global supports the full infrastructure lifecycle, including third-party maintenance (TPM), enterprise hardware sourcing, optical transceivers, and professional data center services such as relocation, smart hands, IT deployment, infrastructure audits, ITAD, and certified data destruction.</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is third-party maintenance (TPM), and why do organizations use it?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">Third-party maintenance is an alternative to OEM support that helps organizations maintain and extend the life of networking, server, and storage equipment. Many teams use TPM to gain flexibility, control support costs, and reduce total cost of ownership.</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Does OSI Global support enterprise networking and optical infrastructure?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">Yes. OSI Global supports enterprise networking -- switches, routers, and access points -- and optical infrastructure with fully compatible optical transceivers, cables, and connectivity solutions designed to work across major OEM platforms.</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What service coverage and SLAs does OSI Global offer?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">OSI Global offers flexible coverage options, including 24/7/365 support and SLA choices designed for business-critical environments -- such as next business day replacement and rapid response services.</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Does OSI Global offer data center and IT professional services?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">Yes. OSI Global provides IT professional services to support infrastructure planning, hardware deployment, and data center initiatives -- working alongside internal teams and existing vendors. Services include data center relocation, smart hands, IT deployment, wireless solutions, infrastructure audits, asset recovery, data destruction, and staff augmentation.</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is IT asset disposition (ITAD), and does OSI Global provide it?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">IT asset disposition (ITAD) is the secure and compliant retirement of IT equipment, including data security and responsible handling of decommissioned assets. OSI Global is R2 recycling certified and offers ITAD services to help organizations reduce risk and recover value.</div></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Who does OSI Global typically work with?<span class="faq-toggle">+</span></div>
+<div class="faq-answer"><div class="faq-answer-inner">OSI Global works with enterprise organizations across industries that rely on complex, mission-critical IT infrastructure and need reliable, cost-effective lifecycle support.</div></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<style>
+.faq-item{border:1px solid #e5e5e5;border-radius:6px;margin-bottom:12px;overflow:hidden}
+.faq-question{padding:18px 22px;cursor:pointer;font-weight:600;font-size:.95rem;color:#141414;display:flex;justify-content:space-between;align-items:center;background:#fff;transition:background .2s}
+.faq-question:hover{background:#F7F9FB}
+.faq-toggle{font-size:1.3rem;color:#8dc63f;transition:transform .3s;flex-shrink:0;margin-left:15px}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease;background:#fff}
+.faq-answer-inner{padding:0 22px 18px;font-size:.9rem;line-height:1.6;color:#666666}
+.faq-item.open .faq-answer{max-height:300px}
+</style>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 11: CTA / CONTACT -->
+<!-- ============================================================ -->
+<section class="section bg-light" id="contact">
+<div class="container">
+<h2 class="text-center mb-3">Start a conversation, not a sales cycle.</h2>
+<p class="text-center mb-5" style="max-width:650px;margin-left:auto;margin-right:auto">Tell us what you're dealing with. Your account manager will respond same-day with a plan -- not a pitch. Engineers are on standby from day one.</p>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:50px;align-items:start" class="contact-layout">
+<form class="form-grid" onsubmit="event.preventDefault();alert('Thank you! An engineer will reach out within one business day.')">
+<div class="form-group"><label>Full name</label><input type="text" placeholder="Jane Smith" required></div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="jane@company.com" required></div>
+<div class="form-group"><label>Company</label><input type="text" placeholder="Acme Corp"></div>
+<div class="form-group"><label>Phone</label><input type="tel" placeholder="+1 (555) 000-0000"></div>
+<div class="form-group full"><label>Service interest</label>
+<select>
+<option value="">Select a service...</option>
+<option>Third-party maintenance (Systain)</option>
+<option>Optical solutions</option>
+<option>Hardware procurement</option>
+<option>Data center services (ITAD, relocation, deployment)</option>
+<option>Multiple services</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-group full"><label>Tell us about your environment</label><textarea placeholder="Equipment, vendors, locations, pain points -- whatever helps us prepare for the conversation..."></textarea></div>
+<div class="form-group full"><button type="submit" class="btn btn-primary">Start a conversation &rarr;</button></div>
+</form>
+<div class="contact-info-sidebar">
+<div class="contact-detail"><div class="cd-icon">&#9742;</div><div class="cd-text"><strong>Phone</strong>+1 (866) 602-4674</div></div>
+<div class="contact-detail"><div class="cd-icon">&#9993;</div><div class="cd-text"><strong>Email</strong>info@osiglobal.com</div></div>
+<div class="contact-detail"><div class="cd-icon">&#9872;</div><div class="cd-text"><strong>Headquarters</strong>606 Olive Street<br>Santa Barbara, CA 93101</div></div>
+<div style="margin-top:15px;padding:20px;background:#F7F9FB;border-radius:8px;font-size:.875rem">
+<strong style="color:#141414;display:block;margin-bottom:6px">Certifications</strong>
+<span style="color:#666666">CCIE &middot; NCDA &middot; JNCIP &middot; HPE ASE &middot; Dell EMC &middot; IBM CSM</span><br>
+<span style="color:#999;font-size:.8rem;margin-top:4px;display:block">100+ certified engineers &middot; US-based TAC &middot; 11s avg answer time</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col">
+<div class="footer-logo"><img src="https://osiglobal.com/wp-content/uploads/2024/07/OSI_Global_logo.png" alt="OSI Global"></div>
+<p>Service-first IT infrastructure. Privately owned since 2008. Gartner-recognized. Engineers answer the phone.</p>
+</div>
+<div class="footer-col">
+<h4>Systain TPM</h4>
+<a href="#">Overview</a>
+<a href="#">Dell</a>
+<a href="#">HPE</a>
+<a href="#">Cisco</a>
+<a href="#">Juniper</a>
+<a href="#">NetApp</a>
+<a href="#">All vendors</a>
+</div>
+<div class="footer-col">
+<h4>Optical solutions</h4>
+<a href="#">Overview</a>
+<a href="#">Cisco optics</a>
+<a href="#">Juniper optics</a>
+<a href="#">Arista optics</a>
+<a href="#">Ciena optics</a>
+<a href="#">All vendors</a>
+</div>
+<div class="footer-col">
+<h4>More</h4>
+<a href="#">Hardware</a>
+<a href="#">Data center services</a>
+<a href="#">About OSI Global</a>
+<a href="#">Careers</a>
+<a href="#">Contact</a>
+</div>
+<div class="footer-col">
+<h4>Resources</h4>
+<a href="#">Blog</a>
+<a href="#">Case studies</a>
+<a href="#">Service level agreements</a>
+<a href="#">Systain client portal</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 OSI Global. All rights reserved. Privately owned since 2008.</p>
+<div class="social-links">
+<a href="#">in</a>
+<a href="#">X</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
