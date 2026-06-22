@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supermicro Third-Party Maintenance | Systain® by OSI Global</title>
+  <style>
+    :root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+    .annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+    .annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+    .topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;}
+    .topbar a{color:var(--green-light);text-decoration:none;}
+    .navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+    .navbar .container{display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+    .logo span{color:var(--green-light);}
+    .nav-links{display:flex;list-style:none;}
+    .nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+    .nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+    .nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+    .breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+    .breadcrumbs a{color:var(--green);text-decoration:none;}
+    .breadcrumbs span{margin:0 6px;}
+    .hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+    .hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+    .hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+    .hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+    .hero h1 .accent{color:var(--lime);}
+    .hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--green-light);}
+    .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+    .btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+    .hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+    .proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+    .proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .proof-stat:last-child{border-bottom:none;}
+    .proof-stat .label{font-size:13px;color:#94a3b8;}
+    .proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+    .eosl-strip{background:var(--dark);padding:20px 0;}
+    .eosl-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .eosl-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+    .eosl-chips{display:flex;gap:10px;flex-wrap:wrap;}
+    .eosl-chip{display:flex;align-items:center;gap:8px;background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 14px;}
+    .eosl-chip .model{font-size:13px;font-weight:700;color:var(--white);font-family:monospace;}
+    .eosl-chip .date{font-size:11px;color:#64748b;}
+    .eosl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .dot-red{background:var(--red);}
+    .dot-amber{background:var(--amber);}
+    .families-section{padding:56px 0;}
+    .section-header{text-align:center;margin-bottom:40px;}
+    .section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+    .section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+    .families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+    .family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+    .family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+    .family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+    .family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+    .family-models{display:flex;flex-wrap:wrap;gap:6px;}
+    .model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+    .why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+    .why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+    .why-icon{font-size:28px;margin-bottom:12px;display:block;}
+    .why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+    .why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+    .proof-section{padding:48px 0;}
+    .proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+    .proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+    .proof-attr{font-size:13px;color:#64748b;}
+    .proof-savings{text-align:center;}
+    .savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+    .savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+    .savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+    .cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+    .cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+    .cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+    .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+    .cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+    .footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+    /* CTA family card */
+    .family-card-cta{background:var(--gray-light);border:2px dashed var(--gray-mid);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;transition:all 0.2s;}
+    .family-card-cta:hover{border-color:var(--green);background:#f0fdf4;}
+    .family-card-cta .cta-icon{font-size:28px;margin-bottom:12px;}
+    .family-card-cta .cta-heading{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+    .family-card-cta .cta-text{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:18px;}
+    .btn-green-sm{background:var(--green);color:white;padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:13px;display:inline-block;transition:background 0.2s;}
+    .btn-green-sm:hover{background:var(--green-light);}
+    @media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+    @media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- 1. Annotation Banner -->
+  <div class="annotation">
+    VENDOR LANDING PAGE TEMPLATE &mdash; URL: <em>/third-party-maintenance/supermicro/</em>
+  </div>
+
+  <!-- 2. Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div style="display:flex;gap:24px;align-items:center;">
+        <span>&#128222; <a href="tel:+18666024674">+1 (866) 602-4674</a></span>
+        <span><a href="mailto:info@osiglobal.com">info@osiglobal.com</a></span>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;">
+        <a href="#">Systain Client Portal</a>
+        <a href="#" style="background:var(--green);color:white;padding:5px 16px;border-radius:50px;font-weight:600;">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">OSI<span>Global</span></div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Third-party maintenance</a></li>
+        <li><a href="#">Optical solutions</a></li>
+        <li><a href="#">Data center services</a></li>
+        <li><a href="#">Hardware</a></li>
+        <li><a href="#">Company</a></li>
+        <li><a href="#" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 4. Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="#">Home</a><span>&#8250;</span>
+      <a href="#">Third-Party Maintenance</a><span>&#8250;</span>
+      <span style="color:var(--text);">Supermicro</span>
+    </div>
+  </div>
+
+  <!-- 5. Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-left">
+          <div class="hero-pill">Systain&reg; for Supermicro</div>
+          <h1>Keep Your Supermicro Servers Running.<br><span class="accent">Long After the Warranty Expires.</span></h1>
+          <p class="hero-sub">Systain&reg; delivers 24/7 L2/L3 support for Supermicro SuperServer, SuperBlade, GPU-optimized, and SuperStorage platforms across X9 through X13 generations &mdash; at a fraction of what OEM extended support costs.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn-primary">Get a Supermicro Quote</a>
+            <a href="#" class="btn-secondary">Send Your Asset List</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-proof">
+            <div class="proof-title">Systain&reg; Coverage at a Glance</div>
+            <div class="proof-stat">
+              <span class="label">Coverage</span>
+              <span class="value">24/7/365</span>
+            </div>
+            <div class="proof-stat">
+              <span class="label">Response SLA</span>
+              <span class="value">NBD, 4-hr, 4-hr Onsite</span>
+            </div>
+            <div class="proof-stat">
+              <span class="label">Engineering level</span>
+              <span class="value">L2 / L3 Supermicro-Certified</span>
+            </div>
+            <div class="proof-stat">
+              <span class="label">Parts coverage</span>
+              <span class="value">Included</span>
+            </div>
+            <div class="proof-stat">
+              <span class="label">Contract term</span>
+              <span class="value">1, 2, or 3 year</span>
+            </div>
+            <div class="proof-stat">
+              <span class="label">Savings vs. OEM Support</span>
+              <span class="value">60&ndash;80%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. EOSL Strip -->
+  <div class="eosl-strip">
+    <div class="container">
+      <div class="eosl-label">Recently EOSL&rsquo;d</div>
+      <div class="eosl-chips">
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-amber"></span>
+          <span class="model">SYS-6029P-WTR</span>
+          <span class="date">EOSL Dec 2025</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-amber"></span>
+          <span class="model">SYS-1029P-WTR</span>
+          <span class="date">EOSL Dec 2025</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">SYS-6028R-TR</span>
+          <span class="date">EOSL Mar 2023</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">SYS-4028GR-TRT</span>
+          <span class="date">EOSL Jun 2024</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">SBE-714D-R75</span>
+          <span class="date">EOSL Sep 2023</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Product Families -->
+  <section class="families-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Supported Supermicro Product Families</h2>
+        <p>Systain&reg; covers the full Supermicro portfolio &mdash; from workhorses to GPU-dense platforms &mdash; with certified hardware maintenance and parts on hand.</p>
+      </div>
+      <div class="families-grid">
+
+        <!-- Family 1: SuperServer 1U & 2U -->
+        <div class="family-card">
+          <div class="family-icon">&#128421;</div>
+          <div class="family-name">SuperServer 1U &amp; 2U</div>
+          <p class="family-desc">High-density 1U and 2U rack servers on X10 through X13 platforms &mdash; the workhorse of Supermicro deployments. Hardware maintenance, IPMI support, and parts included.</p>
+          <div class="family-models">
+            <span class="model-tag">SYS-220P-C9RT</span>
+            <span class="model-tag">SYS-120P-TNR</span>
+            <span class="model-tag">SYS-6029P-WTR</span>
+            <span class="model-tag">SYS-1029P-WTR</span>
+            <span class="model-tag">SYS-2029P-C1RT</span>
+          </div>
+        </div>
+
+        <!-- Family 2: SuperServer 4U & Tower -->
+        <div class="family-card">
+          <div class="family-icon">&#127959;</div>
+          <div class="family-name">SuperServer 4U &amp; Tower</div>
+          <p class="family-desc">4U and tower servers for compute-dense and storage-heavy workloads. Full hardware maintenance including backplane and chassis components.</p>
+          <div class="family-models">
+            <span class="model-tag">SYS-420GP-TNR</span>
+            <span class="model-tag">SYS-4029GP-TRT</span>
+            <span class="model-tag">SYS-4028GR-TRT</span>
+            <span class="model-tag">SYS-740GP-TNRT</span>
+            <span class="model-tag">SYS-420P-WTR</span>
+          </div>
+        </div>
+
+        <!-- Family 3: GPU-Optimized -->
+        <div class="family-card">
+          <div class="family-icon">&#9889;</div>
+          <div class="family-name">GPU-Optimized Servers</div>
+          <p class="family-desc">GPU compute servers for AI/ML, HPC, and rendering workloads &mdash; from 4-GPU to 10-GPU configurations. Hardware maintenance for servers, PCIe risers, and NVLink bridges.</p>
+          <div class="family-models">
+            <span class="model-tag">SYS-421GE-TNRT</span>
+            <span class="model-tag">SYS-521C-NR</span>
+            <span class="model-tag">SYS-420GP-TNR</span>
+            <span class="model-tag">SYS-4124GS-TNR</span>
+            <span class="model-tag">SYS-220GQ-TNAR</span>
+          </div>
+        </div>
+
+        <!-- Family 4: SuperBlade -->
+        <div class="family-card">
+          <div class="family-icon">&#9638;</div>
+          <div class="family-name">SuperBlade</div>
+          <p class="family-desc">SuperBlade chassis and blade modules for high-density compute environments. Full chassis, blade, and midplane hardware maintenance.</p>
+          <div class="family-models">
+            <span class="model-tag">SBE-714D-R75</span>
+            <span class="model-tag">SBE-610L-R32N</span>
+            <span class="model-tag">SBI-7128RG-F</span>
+            <span class="model-tag">SBI-620P-C3N</span>
+            <span class="model-tag">SBI-421E-1T</span>
+          </div>
+        </div>
+
+        <!-- Family 5: SuperStorage -->
+        <div class="family-card">
+          <div class="family-icon">&#128452;</div>
+          <div class="family-name">SuperStorage</div>
+          <p class="family-desc">Storage-optimized platforms with high drive counts &mdash; NVMe, SAS, and hybrid configurations. Hardware maintenance for storage servers and JBOD expansion units.</p>
+          <div class="family-models">
+            <span class="model-tag">SSG-6048R-E1CR36L</span>
+            <span class="model-tag">SSG-136R-NEL32JBF</span>
+            <span class="model-tag">SSG-6049P-E1CR36L</span>
+            <span class="model-tag">SSG-121E-NES24R</span>
+            <span class="model-tag">SSG-640P-E1CR36L</span>
+          </div>
+        </div>
+
+        <!-- CTA Card -->
+        <div class="family-card-cta">
+          <div class="cta-icon">&#128203;</div>
+          <div class="cta-heading">Don&rsquo;t see your model?</div>
+          <p class="cta-text">Send us your Supermicro asset list and we&rsquo;ll confirm coverage within 24 hours.</p>
+          <a href="#" class="btn-green-sm">Check My Equipment</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Why Systain® -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose Systain&reg;?</h2>
+        <p>Purpose-built for enterprises that need reliable, cost-effective hardware maintenance beyond OEM end-of-support.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-icon">&#128176;</span>
+          <div class="why-title">60&ndash;80% Cost Savings</div>
+          <p class="why-text">Supermicro extended support can cost more than the hardware itself. Systain&reg; gives you full hardware coverage at market-rate pricing.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#9889;</span>
+          <div class="why-title">4-Hour Onsite SLA</div>
+          <p class="why-text">NBD, 4-hour, and 4-hour onsite options &mdash; matched to each system&rsquo;s criticality. Flexible SLA tiers across your full Supermicro fleet.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#129504;</span>
+          <div class="why-title">Supermicro-Certified Engineers</div>
+          <p class="why-text">Our team is certified on Supermicro platforms across SuperServer, SuperBlade, and SuperStorage. Deep platform knowledge on every case.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#128230;</span>
+          <div class="why-title">Parts On Hand</div>
+          <p class="why-text">We stock Supermicro-compatible components &mdash; boards, backplanes, power supplies &mdash; so same-day shipment is standard, not an exception.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Testimonial -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="proof-inner">
+        <div>
+          <p class="proof-quote">&ldquo;We run a dense Supermicro environment for GPU compute and the OEM support cost was unsustainable. Systain&reg; took on the full fleet &mdash; servers, blades, storage &mdash; and we cut our support spend by 73%.&rdquo;</p>
+          <p class="proof-attr">&mdash; Head of Infrastructure, AI Research Institute</p>
+        </div>
+        <div class="proof-savings">
+          <span class="savings-number">73%</span>
+          <div class="savings-label">Average savings on Supermicro maintenance</div>
+          <div class="savings-sub">Based on customer-reported OEM vs. Systain&reg; comparisons</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to reduce your Supermicro support costs?</h2>
+      <p>Send us your asset list or current support renewal quote and we&rsquo;ll return a comparison within 24 hours.</p>
+      <div class="cta-actions">
+        <a href="#" class="cta-btn-white">Get a Quote</a>
+        <a href="#" class="cta-btn-outline">Talk to an Engineer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 OSI Global. All rights reserved. | Systain&reg; is a registered trademark of OSI Global.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

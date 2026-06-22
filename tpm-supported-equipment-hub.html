@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supported Equipment | Third-Party Maintenance | SYSTAIN by OSI Global</title>
+<meta name="description" content="Third-party maintenance for Dell, HPE, Cisco, Juniper, NetApp, IBM, Lenovo, Arista, Supermicro, and 15+ additional OEMs. One contract, one support team, 24/7 engineering.">
+<style>
+  :root {
+    --navy: #0a1628;
+    --dark-blue: #0f2140;
+    --accent-blue: #00a3e0;
+    --accent-teal: #00c4b3;
+    --light-gray: #f4f6f9;
+    --mid-gray: #e2e6ec;
+    --text: #2c3e50;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --green: #16a34a;
+    --amber: #f59e0b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6; background: var(--white); }
+
+  .annotation {
+    background: #fffbeb; border: 2px dashed #f59e0b; color: #92400e;
+    padding: 12px 20px; font-size: 14px; text-align: center; font-weight: 500;
+  }
+  .annotation strong { color: #78350f; }
+  .annotation em { font-style: normal; background: #fef3c7; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 13px; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* NAV */
+  .topbar { background: var(--navy); color: #94a3b8; font-size: 13px; padding: 6px 0; }
+  .topbar .container { display: flex; justify-content: space-between; align-items: center; }
+  .topbar a { color: var(--accent-blue); text-decoration: none; }
+  .navbar { background: var(--dark-blue); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 24px; font-weight: 800; color: var(--white); padding: 16px 0; letter-spacing: 1px; }
+  .logo span { color: var(--accent-blue); }
+  .nav-links { display: flex; gap: 0; list-style: none; }
+  .nav-links li a { color: #cbd5e1; text-decoration: none; padding: 20px 18px; display: block; font-size: 14px; font-weight: 500; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+  .nav-links li a:hover, .nav-links li a.active { color: var(--white); background: rgba(0,163,224,0.15); border-bottom: 3px solid var(--accent-blue); }
+  .nav-cta { background: var(--accent-blue) !important; color: var(--white) !important; border-radius: 4px !important; margin: 12px 0; padding: 10px 20px !important; border-bottom: none !important; }
+
+  /* BREADCRUMBS */
+  .breadcrumbs { padding: 14px 0; font-size: 13px; color: var(--text-light); border-bottom: 1px solid var(--mid-gray); }
+  .breadcrumbs a { color: var(--accent-blue); text-decoration: none; }
+  .breadcrumbs span { margin: 0 6px; color: #cbd5e1; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%); color: var(--white); padding: 48px 0 44px; }
+  .hero h1 { font-size: 30px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; max-width: 700px; }
+  .hero h1 .accent { color: var(--accent-blue); }
+  .hero .subtitle { font-size: 18px; color: var(--accent-teal); font-weight: 600; margin-bottom: 16px; }
+  .hero p { font-size: 15px; color: #94a3b8; max-width: 700px; line-height: 1.7; margin-bottom: 24px; }
+  .hero-badge { display: inline-block; background: rgba(0,163,224,0.15); border: 1px solid rgba(0,163,224,0.3); color: var(--accent-blue); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+  .hero-stats { display: flex; gap: 40px; margin-top: 28px; }
+  .hero-stat .number { font-size: 36px; font-weight: 800; color: var(--accent-blue); }
+  .hero-stat .label { font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* TIER 1 SECTION */
+  .tier1-section { padding: 56px 0 48px; }
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 { font-size: 24px; color: var(--navy); margin-bottom: 6px; }
+  .section-header p { font-size: 15px; color: var(--text-light); max-width: 600px; }
+
+  .tier1-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .vendor-card { background: var(--white); border: 1px solid var(--mid-gray); border-radius: 10px; padding: 28px 24px; text-decoration: none; color: var(--text); transition: all 0.25s ease; position: relative; overflow: hidden; }
+  .vendor-card:hover { border-color: var(--accent-blue); box-shadow: 0 4px 20px rgba(0,163,224,0.12); transform: translateY(-2px); }
+  .vendor-card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+  .vendor-card:hover .vendor-name { color: var(--accent-blue); }
+
+  .vendor-card .vendor-logo-area { display: flex; align-items: center; justify-content: center; height: 64px; margin-bottom: 16px; }
+  .vendor-card .vendor-logo-text { font-size: 32px; font-weight: 800; color: var(--navy); letter-spacing: 1px; opacity: 0.85; }
+  .vendor-card .vendor-name { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; transition: color 0.2s; }
+  .vendor-card .vendor-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; margin-bottom: 16px; }
+  .vendor-card .vendor-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .vendor-card .tag { font-size: 11px; background: var(--light-gray); color: var(--text-light); padding: 3px 10px; border-radius: 12px; font-weight: 500; }
+  .card-arrow { position: absolute; top: 24px; right: 20px; font-size: 18px; color: var(--accent-blue); font-weight: 700; opacity: 0; transform: translateX(-6px); transition: all 0.25s ease; }
+  .card-link-row { display: flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; color: var(--accent-blue); font-weight: 600; }
+  .card-link-row .arrow { transition: transform 0.2s; }
+  .vendor-card:hover .card-link-row .arrow { transform: translateX(4px); }
+
+  /* DIVIDER */
+  .section-divider { border: none; border-top: 1px solid var(--mid-gray); margin: 0; }
+
+  /* TIER 2 SECTION */
+  .tier2-section { padding: 48px 0; background: var(--light-gray); }
+  .tier2-section .section-header { margin-bottom: 28px; }
+  .tier2-section .section-header h2 { font-size: 20px; }
+
+  .tier2-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tier2-item { background: var(--white); border: 1px solid var(--mid-gray); border-radius: 8px; padding: 20px 16px; text-align: center; }
+  .tier2-item .t2-logo { font-size: 18px; font-weight: 700; color: var(--navy); opacity: 0.55; margin-bottom: 4px; letter-spacing: 0.5px; }
+  .tier2-item .t2-type { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* CROSS-LINK */
+  .crosslink-section { padding: 40px 0; border-top: 1px solid var(--mid-gray); }
+  .crosslink-section h3 { font-size: 16px; color: var(--navy); margin-bottom: 16px; }
+  .crosslink-cards { display: flex; gap: 16px; }
+  .crosslink-card { flex: 1; padding: 16px 20px; background: var(--light-gray); border-radius: 8px; border: 1px solid var(--mid-gray); text-decoration: none; color: var(--text); transition: border-color 0.2s; }
+  .crosslink-card:hover { border-color: var(--accent-blue); }
+  .crosslink-card h4 { font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+  .crosslink-card p { font-size: 12px; color: var(--text-light); }
+  .crosslink-card .cl-arrow { color: var(--accent-blue); font-size: 13px; font-weight: 600; margin-top: 6px; display: block; }
+
+  /* CTA */
+  .cta-banner { background: linear-gradient(135deg, var(--accent-blue) 0%, #0077b6 100%); color: white; padding: 40px 0; text-align: center; }
+  .cta-banner h2 { font-size: 24px; margin-bottom: 10px; }
+  .cta-banner p { font-size: 15px; opacity: 0.9; margin-bottom: 20px; }
+  .cta-btn { display: inline-block; background: white; color: var(--accent-blue); padding: 14px 32px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15px; }
+
+  .footer { background: var(--navy); color: #64748b; padding: 32px 0 20px; font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- DESIGN NOTE -->
+<div class="annotation">
+  &#128205; <strong>HUB PAGE MOCKUP</strong> &mdash; This is <em>osiglobal.com/third-party-maintenance/supported-equipment/</em> — the gateway to all vendor-specific TPM pages
+</div>
+
+<!-- NAV -->
+<div class="topbar">
+  <div class="container">
+    <span>&#128222; 470-430-0404 &nbsp;|&nbsp; &#128231; sales@osiglobal.com</span>
+    <span><a href="#">Client Portal</a> &nbsp;|&nbsp; <a href="#">Get a Quote</a></span>
+  </div>
+</div>
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">OSI <span>Global</span></div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Third-Party Maintenance</a></li>
+      <li><a href="https://osiglobal.com/optical-solutions/">Optical Solutions</a></li>
+      <li><a href="https://osiglobal.com/osi-hardware/">Hardware</a></li>
+      <li><a href="https://osiglobal.com/catalogs/">Catalogs</a></li>
+      <li><a href="https://osiglobal.com/itad/">ITAD</a></li>
+      <li><a href="https://osiglobal.com/about/">About</a></li>
+      <li><a href="#" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- BREADCRUMBS -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="https://osiglobal.com/">Home</a> <span>&#8250;</span>
+    <a href="#">Third-Party Maintenance</a> <span>&#8250;</span>
+    <strong>Supported Equipment</strong>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">SYSTAIN Third-Party Maintenance</div>
+    <h1>One Contract. <span class="accent">25+ OEMs.</span> Your Entire Infrastructure Covered.</h1>
+    <p>Stop juggling multiple vendor contracts with different SLAs, renewal dates, and support teams. SYSTAIN covers servers, storage, networking, and data protection from every major OEM — all managed by a single engineering team that actually picks up the phone.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="number">25+</div>
+        <div class="label">OEMs Supported</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">24/7</div>
+        <div class="label">L2/L3 Engineering</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">60-80%</div>
+        <div class="label">Savings vs. OEM</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TIER 1: FEATURED VENDORS WITH DEDICATED PAGES -->
+<!-- ============================================================ -->
+<div class="tier1-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured Vendors</h2>
+      <p>Deep-dive pages for the brands we support most. Click any vendor to see supported models, service details, and how we compare to OEM.</p>
+    </div>
+
+    <div class="tier1-grid">
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">DELL</div></div>
+        <div class="vendor-name">Dell Maintenance</div>
+        <div class="vendor-desc">PowerEdge servers, PowerStore &amp; PowerVault storage, PowerSwitch networking, VxRail HCI, and Data Domain.</div>
+        <div class="vendor-tags">
+          <span class="tag">Servers</span>
+          <span class="tag">Storage</span>
+          <span class="tag">Networking</span>
+          <span class="tag">HCI</span>
+        </div>
+        <div class="card-link-row">View supported Dell equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">HPE</div></div>
+        <div class="vendor-name">HPE Maintenance</div>
+        <div class="vendor-desc">ProLiant servers, Nimble &amp; 3PAR storage, Aruba networking, Synergy composable, and BladeSystem.</div>
+        <div class="vendor-tags">
+          <span class="tag">Servers</span>
+          <span class="tag">Storage</span>
+          <span class="tag">Networking</span>
+        </div>
+        <div class="card-link-row">View supported HPE equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">CISCO</div></div>
+        <div class="vendor-name">Cisco Maintenance</div>
+        <div class="vendor-desc">Catalyst &amp; Nexus switches, ISR &amp; ASR routers, Firepower security, UCS servers, and Meraki.</div>
+        <div class="vendor-tags">
+          <span class="tag">Networking</span>
+          <span class="tag">Security</span>
+          <span class="tag">Servers</span>
+        </div>
+        <div class="card-link-row">View supported Cisco equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">SUPERMICRO</div></div>
+        <div class="vendor-name">Supermicro Maintenance</div>
+        <div class="vendor-desc">SuperServer, SuperStorage, SuperBlade, GPU servers, and embedded IoT platforms.</div>
+        <div class="vendor-tags">
+          <span class="tag">Servers</span>
+          <span class="tag">Storage</span>
+          <span class="tag">GPU</span>
+        </div>
+        <div class="card-link-row">View supported Supermicro equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">JUNIPER</div></div>
+        <div class="vendor-name">Juniper Maintenance</div>
+        <div class="vendor-desc">EX &amp; QFX switches, MX &amp; SRX routers, Apstra fabric management, and Mist AI.</div>
+        <div class="vendor-tags">
+          <span class="tag">Networking</span>
+          <span class="tag">Security</span>
+        </div>
+        <div class="card-link-row">View supported Juniper equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">NetApp</div></div>
+        <div class="vendor-name">NetApp Maintenance</div>
+        <div class="vendor-desc">FAS &amp; AFF arrays, ONTAP, E-Series, StorageGRID, and SolidFire.</div>
+        <div class="vendor-tags">
+          <span class="tag">Storage</span>
+          <span class="tag">Data Management</span>
+        </div>
+        <div class="card-link-row">View supported NetApp equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">IBM</div></div>
+        <div class="vendor-name">IBM Maintenance</div>
+        <div class="vendor-desc">Power Systems, FlashSystem &amp; Storwize storage, z Systems mainframes, and tape libraries.</div>
+        <div class="vendor-tags">
+          <span class="tag">Servers</span>
+          <span class="tag">Storage</span>
+          <span class="tag">Mainframe</span>
+        </div>
+        <div class="card-link-row">View supported IBM equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">LENOVO</div></div>
+        <div class="vendor-name">Lenovo Maintenance</div>
+        <div class="vendor-desc">ThinkSystem servers, ThinkAgile HCI, DE &amp; DM storage, and RackSwitch networking.</div>
+        <div class="vendor-tags">
+          <span class="tag">Servers</span>
+          <span class="tag">Storage</span>
+          <span class="tag">HCI</span>
+        </div>
+        <div class="card-link-row">View supported Lenovo equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+      <a href="#" class="vendor-card">
+        <div class="card-arrow">&rarr;</div>
+        <div class="vendor-logo-area"><div class="vendor-logo-text">ARISTA</div></div>
+        <div class="vendor-name">Arista Maintenance</div>
+        <div class="vendor-desc">7000 series data center switches, cognitive campus, and CloudVision management.</div>
+        <div class="vendor-tags">
+          <span class="tag">Networking</span>
+          <span class="tag">Data Center</span>
+        </div>
+        <div class="card-link-row">View supported Arista equipment <span class="arrow">&rarr;</span></div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TIER 2: ADDITIONAL SUPPORTED VENDORS (NO DEDICATED PAGES) -->
+<!-- ============================================================ -->
+<div class="tier2-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>We Also Support</h2>
+      <p>Full SYSTAIN coverage is available for these vendors. Need details on a specific model? <a href="#" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">Contact our team</a> for a custom quote.</p>
+    </div>
+
+    <div class="tier2-grid">
+      <div class="tier2-item">
+        <div class="t2-logo">Brocade</div>
+        <div class="t2-type">Networking / SAN</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Extreme</div>
+        <div class="t2-type">Networking</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">EMC</div>
+        <div class="t2-type">Storage</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Fortinet</div>
+        <div class="t2-type">Security</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Aruba</div>
+        <div class="t2-type">Networking</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">VMware</div>
+        <div class="t2-type">Virtualization</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Intel</div>
+        <div class="t2-type">Servers</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">APC</div>
+        <div class="t2-type">Power / UPS</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Tripp Lite</div>
+        <div class="t2-type">Power / UPS</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Legrand</div>
+        <div class="t2-type">Infrastructure</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">NetGear</div>
+        <div class="t2-type">Networking</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Opengear</div>
+        <div class="t2-type">Console Servers</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Infinidat</div>
+        <div class="t2-type">Storage</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Micron</div>
+        <div class="t2-type">Memory / SSD</div>
+      </div>
+      <div class="tier2-item">
+        <div class="t2-logo">Sun / Oracle</div>
+        <div class="t2-type">Servers / Storage</div>
+      </div>
+      <div class="tier2-item" style="background: var(--light-gray); border-style: dashed; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="t2-logo" style="opacity: 0.4; font-size: 14px;">Don't see your vendor?</div>
+        <div class="t2-type"><a href="#" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">Ask us &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CROSS-LINKS TO OTHER SITE SECTIONS -->
+<div class="crosslink-section">
+  <div class="container">
+    <h3>Related Pages</h3>
+    <div class="crosslink-cards">
+      <a href="#" class="crosslink-card">
+        <h4>SmartOptics &amp; Open Line Systems</h4>
+        <p>Covered under our Open Line Systems pages with full optical layer support.</p>
+        <span class="cl-arrow">View optical solutions &rarr;</span>
+      </a>
+      <a href="#" class="crosslink-card">
+        <h4>Nokia Optical</h4>
+        <p>Supported through our optics brand pages with compatible transceiver coverage.</p>
+        <span class="cl-arrow">View Nokia optics &rarr;</span>
+      </a>
+      <a href="#" class="crosslink-card">
+        <h4>Compatible Optics Search</h4>
+        <p>Find compatible transceivers for any vendor platform, backed by our lifetime warranty.</p>
+        <span class="cl-arrow">Search optics &rarr;</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="container">
+    <h2>Not sure what's covered? Let's find out together.</h2>
+    <p>Send us your asset list and we'll map out exactly what SYSTAIN can cover — usually within 24 hours.</p>
+    <a href="#" class="cta-btn">Request a Quote</a>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p>&copy; 2026 OSI Global. All rights reserved.</p>
+  </div>
+</div>
+
+</body>
+</html>

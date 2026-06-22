@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cisco Third-Party Maintenance | Systain® by OSI Global</title>
+<meta name="description" content="Third-party maintenance for Cisco Catalyst, Nexus, ISR, ASR, Firepower, and UCS — up to 80% below Cisco SMARTnet. 24/7 L2/L3 engineering. 4-hour SLA available.">
+<style>
+  :root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+  .annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+  .annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+  /* TOPBAR */
+  .topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;}
+  .topbar a{color:var(--green-light);text-decoration:none;}
+  /* NAV */
+  .navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+  .navbar .container{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+  .logo span{color:var(--green-light);}
+  .nav-links{display:flex;list-style:none;}
+  .nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+  .nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+  .nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+  /* BREADCRUMBS */
+  .breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+  .breadcrumbs a{color:var(--green);text-decoration:none;}
+  .breadcrumbs span{margin:0 6px;}
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+  .hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+  .hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+  .hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+  .hero h1 .accent{color:var(--lime);}
+  .hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+  .btn-primary:hover{background:var(--green-light);}
+  .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+  .btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+  /* HERO PROOF BOX */
+  .hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+  .proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+  .proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+  .proof-stat:last-child{border-bottom:none;}
+  .proof-stat .label{font-size:13px;color:#94a3b8;}
+  .proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+  /* EOSL CALLOUT STRIP */
+  .eosl-strip{background:var(--dark);padding:20px 0;}
+  .eosl-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .eosl-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+  .eosl-chips{display:flex;gap:10px;flex-wrap:wrap;}
+  .eosl-chip{display:flex;align-items:center;gap:8px;background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 14px;}
+  .eosl-chip .model{font-size:13px;font-weight:700;color:var(--white);font-family:monospace;}
+  .eosl-chip .date{font-size:11px;color:#64748b;}
+  .eosl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .dot-red{background:var(--red);}
+  .dot-amber{background:var(--amber);}
+  /* PRODUCT FAMILIES */
+  .families-section{padding:56px 0;}
+  .section-header{text-align:center;margin-bottom:40px;}
+  .section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+  .section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+  .families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+  .family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+  .family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+  .family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+  .family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+  .family-models{display:flex;flex-wrap:wrap;gap:6px;}
+  .model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+  /* WHY SYSTAIN */
+  .why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+  .why-icon{font-size:28px;margin-bottom:12px;display:block;}
+  .why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+  .why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+  /* TESTIMONIAL / SOCIAL PROOF */
+  .proof-section{padding:48px 0;}
+  .proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+  .proof-attr{font-size:13px;color:#64748b;}
+  .proof-savings{text-align:center;}
+  .savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+  .savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+  .savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+  /* CTA */
+  .cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+  .cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+  .cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+  .cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+  /* FOOTER */
+  .footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+  @media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+  @media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="annotation">📍 <strong>VENDOR LANDING PAGE TEMPLATE</strong> — URL: <em>/third-party-maintenance/cisco/</em> — No PID table; product families + CTA only</div>
+
+<div class="topbar"><div class="container">
+  <span>📞 +1 (866) 602-4674 &nbsp;|&nbsp; 📧 info@osiglobal.com</span>
+  <span><a href="#">Systain Client Portal</a> &nbsp;|&nbsp; <a href="#">Get a Quote</a></span>
+</div></div>
+
+<nav class="navbar"><div class="container">
+  <div class="logo">OSI<span>Global</span></div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Third-party maintenance</a></li>
+    <li><a href="#">Optical solutions</a></li>
+    <li><a href="#">Data center services</a></li>
+    <li><a href="#">Hardware</a></li>
+    <li><a href="#">Company</a></li>
+    <li><a href="#" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</div></nav>
+
+<div class="breadcrumbs"><div class="container">
+  <a href="#">Home</a> <span>›</span>
+  <a href="/third-party-maintenance/">Third-Party Maintenance</a> <span>›</span>
+  <strong>Cisco</strong>
+</div></div>
+
+<!-- HERO -->
+<div class="hero"><div class="container">
+  <div class="hero-layout">
+    <div>
+      <div class="hero-pill">Systain® for Cisco</div>
+      <h1>Keep Your Cisco Running.<br><span class="accent">Without the SMARTnet Bill.</span></h1>
+      <p class="hero-sub">Systain® delivers 24/7 L2/L3 engineering support for Cisco routers, switches, firewalls, and UCS servers — typically 60–80% below SMARTnet pricing, with the same or faster response times.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Get a Cisco Quote</a>
+        <a href="#" class="btn-secondary">Send Your Asset List</a>
+      </div>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-title">What's included</div>
+      <div class="proof-stat"><span class="label">Coverage</span><span class="value">24/7/365</span></div>
+      <div class="proof-stat"><span class="label">Response SLA</span><span class="value">NBD, 4-hr, 4-hr Onsite</span></div>
+      <div class="proof-stat"><span class="label">Engineering level</span><span class="value">L2 / L3 CCIE-level</span></div>
+      <div class="proof-stat"><span class="label">Parts coverage</span><span class="value">Included</span></div>
+      <div class="proof-stat"><span class="label">Contract term</span><span class="value">1, 2, or 3 year</span></div>
+      <div class="proof-stat"><span class="label">Savings vs. SMARTnet</span><span class="value">60–80%</span></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- EOSL STRIP -->
+<div class="eosl-strip"><div class="container">
+  <span class="eosl-label">Popular EOL models we cover</span>
+  <div class="eosl-chips">
+    <div class="eosl-chip"><div class="eosl-dot dot-red"></div><span class="model">ASR 1001-X</span><span class="date">EOSL Jan 2024</span></div>
+    <div class="eosl-chip"><div class="eosl-dot dot-red"></div><span class="model">Nexus 5596UP</span><span class="date">EOSL Aug 2022</span></div>
+    <div class="eosl-chip"><div class="eosl-dot dot-red"></div><span class="model">ISR 4351</span><span class="date">EOSL Mar 2023</span></div>
+    <div class="eosl-chip"><div class="eosl-dot dot-amber"></div><span class="model">Catalyst 9300</span><span class="date">EOSL Dec 2026</span></div>
+    <div class="eosl-chip"><div class="eosl-dot dot-amber"></div><span class="model">UCS C240 M5</span><span class="date">EOSL Jun 2027</span></div>
+  </div>
+</div></div>
+
+<!-- PRODUCT FAMILIES -->
+<div class="families-section"><div class="container">
+  <div class="section-header">
+    <h2>Cisco Products We Support</h2>
+    <p>From campus access layer to core data center — if Cisco made it for enterprise, Systain® can maintain it.</p>
+  </div>
+  <div class="families-grid">
+
+    <div class="family-card">
+      <div class="family-icon">🔀</div>
+      <div class="family-name">Routing</div>
+      <div class="family-desc">ISR and ASR branch and edge routers — including models well past Cisco's EOSL date. Hardware swap, IOS support, and configuration assistance included.</div>
+      <div class="family-models">
+        <span class="model-tag">ISR 4000</span>
+        <span class="model-tag">ASR 1000</span>
+        <span class="model-tag">ASR 9000</span>
+        <span class="model-tag">CSR 1000V</span>
+      </div>
+    </div>
+
+    <div class="family-card">
+      <div class="family-icon">🔁</div>
+      <div class="family-name">Switching</div>
+      <div class="family-desc">Catalyst and Nexus data center and campus switching — from access layer to spine. Full support for modular chassis and fixed platforms.</div>
+      <div class="family-models">
+        <span class="model-tag">Catalyst 9000</span>
+        <span class="model-tag">Nexus 9000</span>
+        <span class="model-tag">Nexus 7000</span>
+        <span class="model-tag">Catalyst 3850</span>
+      </div>
+    </div>
+
+    <div class="family-card">
+      <div class="family-icon">🛡️</div>
+      <div class="family-name">Security</div>
+      <div class="family-desc">Firepower NGFW, ASA appliances, and ISE — hardware maintenance and TAC-equivalent support without the Cisco contract.</div>
+      <div class="family-models">
+        <span class="model-tag">Firepower 4100</span>
+        <span class="model-tag">Firepower 9300</span>
+        <span class="model-tag">ASA 5500-X</span>
+        <span class="model-tag">FTD</span>
+      </div>
+    </div>
+
+    <div class="family-card">
+      <div class="family-icon">🖥️</div>
+      <div class="family-name">UCS Servers</div>
+      <div class="family-desc">UCS C-Series rack and B-Series blade servers, including FI-attached fabric interconnect environments. Parts, firmware guidance, and UCS Manager support.</div>
+      <div class="family-models">
+        <span class="model-tag">UCS C240 M5</span>
+        <span class="model-tag">UCS C220 M5</span>
+        <span class="model-tag">UCS B200 M5</span>
+        <span class="model-tag">UCS 6454 FI</span>
+      </div>
+    </div>
+
+    <div class="family-card">
+      <div class="family-icon">📡</div>
+      <div class="family-name">Wireless</div>
+      <div class="family-desc">Aironet and older Meraki access points, wireless LAN controllers — hardware replacement and configuration support for on-prem wireless infrastructure.</div>
+      <div class="family-models">
+        <span class="model-tag">Aironet 4800</span>
+        <span class="model-tag">Aironet 3800</span>
+        <span class="model-tag">Catalyst 9120</span>
+        <span class="model-tag">WLC 3504</span>
+      </div>
+    </div>
+
+    <div class="family-card" style="background:var(--gray-light);border-style:dashed;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;">
+      <div style="font-size:28px;">📋</div>
+      <div class="family-name">Don't see your model?</div>
+      <div class="family-desc">Send us your Cisco asset list and we'll confirm coverage within 24 hours — no commitment required.</div>
+      <a href="#" class="btn-primary" style="font-size:13px;padding:10px 20px;">Check My Equipment</a>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- WHY SYSTAIN -->
+<div class="why-section"><div class="container">
+  <div class="section-header">
+    <h2>Why Choose Systain® Over SMARTnet?</h2>
+    <p>Same hardware coverage. Faster response time. A fraction of the price.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">💰</span>
+      <div class="why-title">60–80% Cost Savings</div>
+      <div class="why-text">SMARTnet renewal prices increase year over year as hardware ages. Systain® pricing doesn't. Most customers save significantly on day one.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">⚡</span>
+      <div class="why-title">4-Hour Onsite SLA</div>
+      <div class="why-text">Next-business-day, 4-hour, and 4-hour onsite SLAs available — matched to your actual uptime requirements, not Cisco's tier menu.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🧠</span>
+      <div class="why-title">CCIE-Level Engineers</div>
+      <div class="why-text">Every case is handled by engineers who specialize in Cisco infrastructure — not a tier-1 script. Direct access, no ticket queue.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">📦</span>
+      <div class="why-title">Spare Parts Included</div>
+      <div class="why-text">We maintain our own parts inventory. Replacement hardware ships the same day — no waiting on Cisco's depot or fighting over allocation.</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-section"><div class="container">
+  <div class="proof-inner">
+    <div>
+      <div class="proof-quote">"We had 140 Cisco devices coming off SMARTnet in one renewal cycle. OSI Global covered all of them under a single Systain® contract — we cut our maintenance spend by 72% and actually got faster response times."</div>
+      <div class="proof-attr">— Director of Network Operations, Regional Healthcare System</div>
+    </div>
+    <div class="proof-savings">
+      <span class="savings-number">72%</span>
+      <div class="savings-label">Average savings on Cisco maintenance</div>
+      <div class="savings-sub">Based on customer-reported SMARTnet vs. Systain® comparisons</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- CTA -->
+<div class="cta-banner"><div class="container">
+  <h2>Ready to cut your Cisco maintenance costs?</h2>
+  <p>Send us your current asset list or SMARTnet renewal quote and we'll put together a comparison within 24 hours.</p>
+  <div class="cta-actions">
+    <a href="#" class="cta-btn-white">Get a Quote</a>
+    <a href="#" class="cta-btn-outline">Talk to an Engineer</a>
+  </div>
+</div></div>
+
+<div class="footer"><div class="container">
+  <p>© 2026 OSI Global. All rights reserved. &nbsp;|&nbsp; Systain® is a registered trademark of OSI Global.</p>
+</div></div>
+
+</body>
+</html>

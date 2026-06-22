@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arista Third-Party Maintenance | Systain® by OSI Global</title>
+<style>
+:root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+.annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+.annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+.topbar a{color:var(--green-light);text-decoration:none;}
+.navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+.logo span{color:var(--green-light);}
+.nav-links{display:flex;list-style:none;}
+.nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+.nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+.nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+.breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+.breadcrumbs a{color:var(--green);text-decoration:none;}
+.breadcrumbs span{margin:0 6px;}
+.hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+.hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+.hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+.hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+.hero h1 .accent{color:var(--lime);}
+.hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+.btn-primary:hover{background:var(--green-light);}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+.hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+.proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+.proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.proof-stat:last-child{border-bottom:none;}
+.proof-stat .label{font-size:13px;color:#94a3b8;}
+.proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+.eosl-strip{background:var(--dark);padding:20px 0;}
+.eosl-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.eosl-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.eosl-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.eosl-chip{display:flex;align-items:center;gap:8px;background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 14px;}
+.eosl-chip .model{font-size:13px;font-weight:700;color:var(--white);font-family:monospace;}
+.eosl-chip .date{font-size:11px;color:#64748b;}
+.eosl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dot-red{background:var(--red);}
+.dot-amber{background:var(--amber);}
+.families-section{padding:56px 0;}
+.section-header{text-align:center;margin-bottom:40px;}
+.section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+.families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+.family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+.family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+.family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+.family-models{display:flex;flex-wrap:wrap;gap:6px;}
+.model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+.why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+.why-icon{font-size:28px;margin-bottom:12px;display:block;}
+.why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+.proof-section{padding:48px 0;}
+.proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+.proof-attr{font-size:13px;color:#64748b;}
+.proof-savings{text-align:center;}
+.savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+.savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+.savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+.cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+.cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+.cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+.cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+.footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+/* CTA card variant */
+.family-card-cta{background:var(--gray-light);border:2px dashed var(--gray-mid);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;transition:all 0.2s;}
+.family-card-cta:hover{border-color:var(--green);background:var(--white);}
+.family-card-cta .family-cta-icon{font-size:28px;margin-bottom:14px;}
+.family-card-cta .family-cta-title{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.family-card-cta .family-cta-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:20px;}
+.btn-cta-green{display:inline-block;background:var(--green);color:var(--white);padding:11px 24px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:background 0.2s;}
+.btn-cta-green:hover{background:var(--green-light);}
+@media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+@media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- 1. Annotation Banner -->
+<div class="annotation">
+  VENDOR LANDING PAGE TEMPLATE — URL: <em>/third-party-maintenance/arista/</em>
+</div>
+
+<!-- 2. Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div style="display:flex;gap:24px;align-items:center;">
+      <span>📞 <a href="tel:+18666024674">+1 (866) 602-4674</a></span>
+      <span>✉ <a href="mailto:info@osiglobal.com">info@osiglobal.com</a></span>
+    </div>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <a href="#">Systain Client Portal</a>
+      <a href="#" style="background:var(--green);color:white;padding:5px 16px;border-radius:50px;font-weight:600;">Get a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Sticky Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">OSI<span>Global</span></div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Third-party maintenance</a></li>
+      <li><a href="#">Optical solutions</a></li>
+      <li><a href="#">Data center services</a></li>
+      <li><a href="#">Hardware</a></li>
+      <li><a href="#">Company</a></li>
+      <li><a href="#" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 4. Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="#">Home</a><span>›</span>
+    <a href="#">Third-Party Maintenance</a><span>›</span>
+    Arista
+  </div>
+</div>
+
+<!-- 5. Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <!-- Left column -->
+      <div>
+        <span class="hero-pill">Systain® for Arista</span>
+        <h1>Keep Your Arista Fabric Running.<br><span class="accent">Without the Arista Support Renewal.</span></h1>
+        <p class="hero-sub">Systain® provides 24/7 L2/L3 support for Arista 7000-series data center switching, campus platforms, and CloudVision management appliances — typically 60–80% below Arista's own support pricing.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Get an Arista Quote</a>
+          <a href="#" class="btn-secondary">Send Your Asset List</a>
+        </div>
+      </div>
+      <!-- Right column: Proof box -->
+      <div class="hero-proof">
+        <div class="proof-title">Systain® Coverage Summary</div>
+        <div class="proof-stat">
+          <span class="label">Coverage</span>
+          <span class="value">24/7/365</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Response SLA</span>
+          <span class="value">NBD, 4-hr, 4-hr Onsite</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Engineering level</span>
+          <span class="value">L2 / L3 ACE-Certified</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Parts coverage</span>
+          <span class="value">Included</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Contract term</span>
+          <span class="value">1, 2, or 3 year</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Savings vs. Arista Support</span>
+          <span class="value">60–80%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. EOSL Strip -->
+<div class="eosl-strip">
+  <div class="container">
+    <span class="eosl-label">EOSL Models</span>
+    <div class="eosl-chips">
+      <div class="eosl-chip">
+        <span class="eosl-dot dot-amber"></span>
+        <span class="model">DCS-7050CX3-32S</span>
+        <span class="date">EOSL Jun 2026</span>
+      </div>
+      <div class="eosl-chip">
+        <span class="eosl-dot dot-red"></span>
+        <span class="model">DCS-7060CX2-32S</span>
+        <span class="date">EOSL Jan 2025</span>
+      </div>
+      <div class="eosl-chip">
+        <span class="eosl-dot dot-red"></span>
+        <span class="model">DCS-7280CR2-60</span>
+        <span class="date">EOSL Mar 2024</span>
+      </div>
+      <div class="eosl-chip">
+        <span class="eosl-dot dot-red"></span>
+        <span class="model">DCS-7504 Chassis</span>
+        <span class="date">EOSL Aug 2023</span>
+      </div>
+      <div class="eosl-chip">
+        <span class="eosl-dot dot-red"></span>
+        <span class="model">DCS-7050TX-64</span>
+        <span class="date">EOSL Nov 2022</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Product Families -->
+<section class="families-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Supported Arista Product Families</h2>
+      <p>Systain® covers the full Arista switching portfolio — from ToR leaf switches to modular chassis and campus platforms.</p>
+    </div>
+    <div class="families-grid">
+
+      <!-- Card 1: 7050/7060 ToR -->
+      <div class="family-card">
+        <div class="family-icon">🔁</div>
+        <div class="family-name">7050/7060 ToR Switching</div>
+        <div class="family-desc">Fixed 1RU and 2RU top-of-rack platforms — the workhorse of leaf-spine fabrics. Hardware replacement and EOS support guidance included.</div>
+        <div class="family-models">
+          <span class="model-tag">DCS-7050CX3-32S</span>
+          <span class="model-tag">DCS-7060CX2-32S</span>
+          <span class="model-tag">DCS-7050TX-128</span>
+          <span class="model-tag">DCS-7060DX4-32S</span>
+          <span class="model-tag">DCS-7050SX3-48YC12</span>
+        </div>
+      </div>
+
+      <!-- Card 2: 7280/7170 Leaf & Spine -->
+      <div class="family-card">
+        <div class="family-icon">🌐</div>
+        <div class="family-name">7280/7170 Leaf &amp; Spine</div>
+        <div class="family-desc">High-density fixed leaf and spine platforms with programmable forwarding. Full hardware maintenance for line-rate 100G and 400G deployments.</div>
+        <div class="family-models">
+          <span class="model-tag">DCS-7280CR3-96</span>
+          <span class="model-tag">DCS-7280DR3-24</span>
+          <span class="model-tag">DCS-7170-32C</span>
+          <span class="model-tag">DCS-7280SR2-48YC6</span>
+          <span class="model-tag">DCS-7170-64C</span>
+        </div>
+      </div>
+
+      <!-- Card 3: 7300/7320 Spine -->
+      <div class="family-card">
+        <div class="family-icon">🏗️</div>
+        <div class="family-name">7300/7320 Spine</div>
+        <div class="family-desc">Fixed spine platforms for high-throughput data center core — 100G and 400G. Hardware maintenance for fixed-configuration spine switches.</div>
+        <div class="family-models">
+          <span class="model-tag">DCS-7320X-32C</span>
+          <span class="model-tag">DCS-7300X3-32C</span>
+          <span class="model-tag">DCS-7312</span>
+          <span class="model-tag">DCS-7316</span>
+          <span class="model-tag">DCS-7368X4</span>
+        </div>
+      </div>
+
+      <!-- Card 4: 7500 Core Chassis -->
+      <div class="family-card">
+        <div class="family-icon">🖥️</div>
+        <div class="family-name">7500 Core Chassis</div>
+        <div class="family-desc">Modular 7500R and 7500E chassis — 4-slot to 8-slot configurations. Hardware maintenance for chassis, supervisor modules, fabric cards, and line cards.</div>
+        <div class="family-models">
+          <span class="model-tag">DCS-7508</span>
+          <span class="model-tag">DCS-7506</span>
+          <span class="model-tag">DCS-7504</span>
+          <span class="model-tag">DCS-7508R</span>
+          <span class="model-tag">DCS-7516</span>
+        </div>
+      </div>
+
+      <!-- Card 5: Campus 710/720 -->
+      <div class="family-card">
+        <div class="family-icon">🏢</div>
+        <div class="family-name">Campus (710/720)</div>
+        <div class="family-desc">Cognitive campus switching platforms for enterprise access and distribution. Hardware replacement for the physical campus layer.</div>
+        <div class="family-models">
+          <span class="model-tag">DCS-720XP-96ZC2</span>
+          <span class="model-tag">DCS-720DP-24S2</span>
+          <span class="model-tag">DCS-710P-16P</span>
+          <span class="model-tag">DCS-720XP-48ZC2</span>
+          <span class="model-tag">DCS-722XPM-48Y4</span>
+        </div>
+      </div>
+
+      <!-- Card 6: CTA -->
+      <div class="family-card-cta">
+        <div class="family-cta-icon">📋</div>
+        <div class="family-cta-title">Don't see your model?</div>
+        <div class="family-cta-desc">Send us your Arista asset list and we'll confirm coverage within 24 hours.</div>
+        <a href="#" class="btn-cta-green">Check My Equipment</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 8. Why Systain® -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Systain®?</h2>
+      <p>Enterprise-grade support for your Arista environment — without the OEM price tag.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">💰</span>
+        <div class="why-title">60–80% Cost Savings</div>
+        <div class="why-text">Arista support renewals stay expensive long after hardware is paid off. Systain® pricing is based on actual support cost, not OEM list price.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <div class="why-title">4-Hour Onsite SLA</div>
+        <div class="why-text">NBD, 4-hour, and 4-hour onsite options — matched to the criticality of your network fabric, not a generic tier structure.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🧠</span>
+        <div class="why-title">ACE-Certified Engineers</div>
+        <div class="why-text">Our network engineers hold Arista certifications and specialize in EOS, EVPN-VXLAN, and leaf-spine architectures.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📦</span>
+        <div class="why-title">Parts Ready to Ship</div>
+        <div class="why-text">We stock Arista-compatible line cards, fans, power supplies, and optics so replacements ship same day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Testimonial -->
+<section class="proof-section">
+  <div class="container">
+    <div class="proof-inner">
+      <div>
+        <div class="proof-quote">"We were running an all-Arista leaf-spine fabric and the annual support renewal was becoming a significant line item. Systain® covered the full environment — switches, chassis, everything — and we cut the cost by 70%."</div>
+        <div class="proof-attr">— Director of Cloud Infrastructure, SaaS Company</div>
+      </div>
+      <div class="proof-savings">
+        <span class="savings-number">70%</span>
+        <div class="savings-label">Average savings on Arista maintenance</div>
+        <div class="savings-sub">Based on customer-reported Arista vs. Systain® comparisons</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to reduce your Arista support costs?</h2>
+    <p>Send us your Arista renewal quote or asset list and we'll return a comparison within 24 hours.</p>
+    <div class="cta-actions">
+      <a href="#" class="cta-btn-white">Get a Quote</a>
+      <a href="#" class="cta-btn-outline">Talk to an Engineer</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 OSI Global. All rights reserved. | Systain® is a registered trademark of OSI Global.</p>
+  </div>
+</footer>
+
+</body>
+</html>

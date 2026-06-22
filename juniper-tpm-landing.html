@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juniper Third-Party Maintenance | Systain® by OSI Hardware</title>
+  <style>
+    :root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+    .annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+    .annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+    .topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;}
+    .topbar a{color:var(--green-light);text-decoration:none;}
+    .navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+    .navbar .container{display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+    .logo span{color:var(--green-light);}
+    .nav-links{display:flex;list-style:none;}
+    .nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+    .nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+    .nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+    .breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+    .breadcrumbs a{color:var(--green);text-decoration:none;}
+    .breadcrumbs span{margin:0 6px;}
+    .hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+    .hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+    .hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+    .hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+    .hero h1 .accent{color:var(--lime);}
+    .hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--green-light);}
+    .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+    .btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+    .hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+    .proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+    .proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .proof-stat:last-child{border-bottom:none;}
+    .proof-stat .label{font-size:13px;color:#94a3b8;}
+    .proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+    .eosl-strip{background:var(--dark);padding:20px 0;}
+    .eosl-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .eosl-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+    .eosl-chips{display:flex;gap:10px;flex-wrap:wrap;}
+    .eosl-chip{display:flex;align-items:center;gap:8px;background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 14px;}
+    .eosl-chip .model{font-size:13px;font-weight:700;color:var(--white);font-family:monospace;}
+    .eosl-chip .date{font-size:11px;color:#64748b;}
+    .eosl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .dot-red{background:var(--red);}
+    .dot-amber{background:var(--amber);}
+    .families-section{padding:56px 0;}
+    .section-header{text-align:center;margin-bottom:40px;}
+    .section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+    .section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+    .families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+    .family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+    .family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+    .family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+    .family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+    .family-models{display:flex;flex-wrap:wrap;gap:6px;}
+    .model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+    .why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+    .why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+    .why-icon{font-size:28px;margin-bottom:12px;display:block;}
+    .why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+    .why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+    .proof-section{padding:48px 0;}
+    .proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+    .proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+    .proof-attr{font-size:13px;color:#64748b;}
+    .proof-savings{text-align:center;}
+    .savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+    .savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+    .savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+    .cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+    .cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+    .cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+    .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+    .cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+    .footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+    @media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+    @media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+
+    /* CTA card variant */
+    .family-card-cta{background:var(--gray-light);border:2px dashed var(--gray-mid);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;}
+    .family-card-cta .cta-card-icon{font-size:28px;}
+    .family-card-cta .cta-card-title{font-size:15px;font-weight:700;color:var(--dark);}
+    .family-card-cta .cta-card-sub{font-size:13px;color:var(--text-muted);line-height:1.5;}
+    .family-card-cta .cta-card-link{margin-top:4px;display:inline-block;background:var(--green);color:white;padding:10px 22px;border-radius:50px;font-weight:700;font-size:13px;text-decoration:none;transition:background 0.2s;}
+    .family-card-cta .cta-card-link:hover{background:var(--green-light);}
+  </style>
+</head>
+<body>
+
+  <!-- 1. Annotation Banner -->
+  <div class="annotation">
+    VENDOR LANDING PAGE TEMPLATE &mdash; URL: <em>/third-party-maintenance/juniper/</em>
+  </div>
+
+  <!-- 2. Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div>
+        📞 <a href="tel:18005551234">1-800-555-1234</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        ✉ <a href="mailto:tpm@osiglobal.com">tpm@osiglobal.com</a>
+      </div>
+      <div>
+        <a href="/portal">Customer Portal</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/quote">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sticky Nav -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">OSI<span>Hardware</span></div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/third-party-maintenance/" class="active">Third-Party Maintenance</a></li>
+        <li><a href="/hardware/">Hardware</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/quote/" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 4. Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/third-party-maintenance/">Third-Party Maintenance</a>
+      <span>›</span>
+      Juniper
+    </div>
+  </div>
+
+  <!-- 5. Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-left">
+          <div class="hero-pill">Systain® for Juniper</div>
+          <h1>Keep Your Juniper Network Running.<br><span class="accent">Without the JTAC Contract Cost.</span></h1>
+          <p class="hero-sub">Systain® delivers 24/7 L2/L3 engineering support for Juniper MX routers, QFX and EX switching, SRX security gateways, and PTX packet transport — typically 60–80% below Juniper Care pricing.</p>
+          <div class="hero-actions">
+            <a href="/quote/?vendor=juniper" class="btn-primary">Get a Juniper Quote</a>
+            <a href="/asset-list/" class="btn-secondary">Send Your Asset List</a>
+          </div>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-title">What's included with Systain®</div>
+          <div class="proof-stat">
+            <span class="label">Coverage</span>
+            <span class="value">24/7/365</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Response SLA</span>
+            <span class="value">NBD, 4-hr, 4-hr Onsite</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Engineering level</span>
+            <span class="value">L2 / L3 JNCIE-level</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Parts coverage</span>
+            <span class="value">Included</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Contract term</span>
+            <span class="value">1, 2, or 3 year</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Savings vs. Juniper Care</span>
+            <span class="value">60–80%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. EOSL Strip -->
+  <div class="eosl-strip">
+    <div class="container">
+      <span class="eosl-label">Popular EOL models we cover</span>
+      <div class="eosl-chips">
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">MX240</span>
+          <span class="date">EOSL Jul 2023</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">EX4200-48T</span>
+          <span class="date">EOSL Jan 2022</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">SRX240H2</span>
+          <span class="date">EOSL Mar 2023</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-amber"></span>
+          <span class="model">QFX5100-48S</span>
+          <span class="date">EOSL Sep 2026</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">MX480</span>
+          <span class="date">EOSL Dec 2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Product Families Grid -->
+  <section class="families-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Juniper Product Families We Support</h2>
+        <p>Systain® covers the full Juniper portfolio — from campus edge to core WAN. Hardware replacement, Junos support, and sparing included.</p>
+      </div>
+      <div class="families-grid">
+
+        <!-- Card 1: MX Series -->
+        <div class="family-card">
+          <div class="family-icon">🔀</div>
+          <div class="family-name">MX Series Routing</div>
+          <p class="family-desc">MX edge and core routers — from the MX80 branch platform to the MX2020 ultra-high-density chassis. Hardware replacement and Junos support included.</p>
+          <div class="family-models">
+            <span class="model-tag">MX960</span>
+            <span class="model-tag">MX480</span>
+            <span class="model-tag">MX240</span>
+            <span class="model-tag">MX2010</span>
+            <span class="model-tag">MX104</span>
+          </div>
+        </div>
+
+        <!-- Card 2: QFX -->
+        <div class="family-card">
+          <div class="family-icon">🔁</div>
+          <div class="family-name">QFX Data Center Switching</div>
+          <p class="family-desc">QFX fixed and modular spine/leaf platforms for data center fabrics. Supports EVPN-VXLAN architectures with hardware-level maintenance.</p>
+          <div class="family-models">
+            <span class="model-tag">QFX10002-36Q</span>
+            <span class="model-tag">QFX5120-48Y</span>
+            <span class="model-tag">QFX5110-48S</span>
+            <span class="model-tag">QFX5100-48S</span>
+            <span class="model-tag">QFX10008</span>
+          </div>
+        </div>
+
+        <!-- Card 3: EX Campus -->
+        <div class="family-card">
+          <div class="family-icon">🏢</div>
+          <div class="family-name">EX Campus Switching</div>
+          <p class="family-desc">EX fixed and modular campus switching platforms — from access layer to distribution and core. Full hardware support including Virtual Chassis.</p>
+          <div class="family-models">
+            <span class="model-tag">EX4300-48T</span>
+            <span class="model-tag">EX4300-48P</span>
+            <span class="model-tag">EX9208</span>
+            <span class="model-tag">EX9214</span>
+            <span class="model-tag">EX2300-48P</span>
+          </div>
+        </div>
+
+        <!-- Card 4: SRX Security -->
+        <div class="family-card">
+          <div class="family-icon">🛡️</div>
+          <div class="family-name">SRX Security</div>
+          <p class="family-desc">SRX branch, midrange, and high-end firewalls — including clustered HA pairs. Hardware maintenance, chassis replacement, and JSEC configuration support.</p>
+          <div class="family-models">
+            <span class="model-tag">SRX4600</span>
+            <span class="model-tag">SRX4200</span>
+            <span class="model-tag">SRX1500</span>
+            <span class="model-tag">SRX345</span>
+            <span class="model-tag">SRX300</span>
+          </div>
+        </div>
+
+        <!-- Card 5: PTX Packet Transport -->
+        <div class="family-card">
+          <div class="family-icon">🚀</div>
+          <div class="family-name">PTX Packet Transport</div>
+          <p class="family-desc">PTX Series packet transport routers for high-density WAN and core deployments. Hardware maintenance for fixed and modular chassis.</p>
+          <div class="family-models">
+            <span class="model-tag">PTX5000</span>
+            <span class="model-tag">PTX3000</span>
+            <span class="model-tag">PTX1000</span>
+            <span class="model-tag">PTX10002</span>
+            <span class="model-tag">PTX10008</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Don't see your model? -->
+        <div class="family-card family-card-cta">
+          <div class="cta-card-icon">🔍</div>
+          <div class="cta-card-title">Don't see your model?</div>
+          <p class="cta-card-sub">We cover a broad range of Juniper hardware beyond what's listed here. Send us your asset list and we'll confirm coverage within one business day.</p>
+          <a href="/asset-list/" class="cta-card-link">Submit Your Asset List</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Why Systain® -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose Systain® for Juniper?</h2>
+        <p>Third-party maintenance built specifically around Junos-based infrastructure — not a generic break-fix program.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-icon">💰</span>
+          <div class="why-title">60–80% Cost Savings</div>
+          <p class="why-text">Juniper Care premiums grow as hardware ages past EOSL. Systain® pricing is based on what it actually costs to support your gear — not Juniper's list price.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">⚡</span>
+          <div class="why-title">4-Hour Onsite SLA</div>
+          <p class="why-text">NBD, 4-hour, and 4-hour onsite options matched to your network criticality — not a generic tier structure.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🧠</span>
+          <div class="why-title">JNCIE-Level Engineers</div>
+          <p class="why-text">Our network engineers hold Juniper certifications and specialize in Junos-based platforms. You get a real routing and switching expert on every call.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">📦</span>
+          <div class="why-title">Parts Stocked and Ready</div>
+          <p class="why-text">We maintain Juniper-compatible hardware inventory so replacement line cards, power supplies, and chassis ship same day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Testimonial / Social Proof -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="proof-inner">
+        <div>
+          <p class="proof-quote">"We were running a mix of MX routers and QFX switching and Juniper Care was costing us more than the hardware was worth. Systain® took on the full environment — we saved 74% and kept the same SLA."</p>
+          <p class="proof-attr">— Network Architect, Tier 2 Service Provider</p>
+        </div>
+        <div class="proof-savings">
+          <span class="savings-number">74%</span>
+          <div class="savings-label">Average savings on Juniper maintenance</div>
+          <div class="savings-sub">Compared to equivalent Juniper Care contract</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to cut your Juniper support costs?</h2>
+      <p>Send us your Juniper Care renewal quote or asset list and we'll return a comparison within 24 hours.</p>
+      <div class="cta-actions">
+        <a href="/quote/?vendor=juniper" class="cta-btn-white">Get a Juniper Quote</a>
+        <a href="/asset-list/" class="cta-btn-outline">Send Your Asset List</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 OSI Hardware. All rights reserved. &nbsp;|&nbsp; Systain® is a registered trademark of OSI Hardware. &nbsp;|&nbsp; <a href="/privacy/" style="color:#22c55e;text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms/" style="color:#22c55e;text-decoration:none;">Terms of Service</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

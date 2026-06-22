@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetApp Third-Party Maintenance | Systain® by OSI Hardware</title>
+  <style>
+    :root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+    .annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+    .annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+    .topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;}
+    .topbar a{color:var(--green-light);text-decoration:none;}
+    .navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+    .navbar .container{display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+    .logo span{color:var(--green-light);}
+    .nav-links{display:flex;list-style:none;}
+    .nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+    .nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+    .nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+    .breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+    .breadcrumbs a{color:var(--green);text-decoration:none;}
+    .breadcrumbs span{margin:0 6px;}
+    .hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+    .hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+    .hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+    .hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+    .hero h1 .accent{color:var(--lime);}
+    .hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--green-light);}
+    .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+    .btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+    .hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+    .proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+    .proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .proof-stat:last-child{border-bottom:none;}
+    .proof-stat .label{font-size:13px;color:#94a3b8;}
+    .proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+    .eosl-strip{background:var(--dark);padding:20px 0;}
+    .eosl-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .eosl-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+    .eosl-chips{display:flex;gap:10px;flex-wrap:wrap;}
+    .eosl-chip{display:flex;align-items:center;gap:8px;background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 14px;}
+    .eosl-chip .model{font-size:13px;font-weight:700;color:var(--white);font-family:monospace;}
+    .eosl-chip .date{font-size:11px;color:#64748b;}
+    .eosl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .dot-red{background:var(--red);}
+    .dot-amber{background:var(--amber);}
+    .families-section{padding:56px 0;}
+    .section-header{text-align:center;margin-bottom:40px;}
+    .section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+    .section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+    .families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+    .family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+    .family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+    .family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+    .family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+    .family-models{display:flex;flex-wrap:wrap;gap:6px;}
+    .model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+    .why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+    .why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+    .why-icon{font-size:28px;margin-bottom:12px;display:block;}
+    .why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+    .why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+    .proof-section{padding:48px 0;}
+    .proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+    .proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+    .proof-attr{font-size:13px;color:#64748b;}
+    .proof-savings{text-align:center;}
+    .savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+    .savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+    .savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+    .cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+    .cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+    .cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+    .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+    .cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+    .footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+    @media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+    @media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+
+    /* CTA card variant */
+    .family-card-cta{background:var(--gray-light);border:2px dashed var(--gray-mid);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;}
+    .family-card-cta .cta-card-icon{font-size:32px;}
+    .family-card-cta .cta-card-heading{font-size:15px;font-weight:700;color:var(--dark);}
+    .family-card-cta .cta-card-text{font-size:13px;color:var(--text-muted);line-height:1.55;max-width:220px;}
+    .family-card-cta .cta-card-link{display:inline-block;background:var(--green);color:var(--white);padding:10px 22px;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;margin-top:4px;}
+    .family-card-cta .cta-card-link:hover{background:var(--green-light);}
+  </style>
+</head>
+<body>
+
+  <!-- 1. Annotation Banner -->
+  <div class="annotation">
+    VENDOR LANDING PAGE TEMPLATE &mdash; URL: <em>/third-party-maintenance/netapp/</em>
+  </div>
+
+  <!-- 2. Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div>
+        <span>&#128222; <a href="tel:18005551234">1-800-555-1234</a></span>
+        &nbsp;&nbsp;
+        <span>&#9993; <a href="mailto:support@osiglobal.com">support@osiglobal.com</a></span>
+      </div>
+      <div>
+        <a href="/portal">Customer Portal</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="/quote">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sticky Nav -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">OSI<span>global</span></div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/third-party-maintenance" class="active">Third-Party Maintenance</a></li>
+        <li><a href="/vendors">Vendors</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/quote" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 4. Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="/">Home</a>
+      <span>&rsaquo;</span>
+      <a href="/third-party-maintenance">Third-Party Maintenance</a>
+      <span>&rsaquo;</span>
+      NetApp
+    </div>
+  </div>
+
+  <!-- 5. Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <!-- Left column -->
+        <div>
+          <div class="hero-pill">Systain&reg; for NetApp</div>
+          <h1>Keep Your NetApp Storage Running.<br><span class="accent">Without the SupportEdge Sticker Price.</span></h1>
+          <p class="hero-sub">Systain&reg; provides 24/7 L2/L3 engineering support for NetApp FAS hybrid, AFF all-flash, E-Series SAN, StorageGRID object storage, and SolidFire &mdash; typically 60&ndash;80% below NetApp SupportEdge pricing.</p>
+          <div class="hero-actions">
+            <a href="/quote?vendor=netapp" class="btn-primary">Get a NetApp Quote</a>
+            <a href="/contact?type=asset-list&vendor=netapp" class="btn-secondary">Send Your Asset List</a>
+          </div>
+        </div>
+        <!-- Right column — proof box -->
+        <div class="hero-proof">
+          <div class="proof-title">Systain&reg; Service at a Glance</div>
+          <div class="proof-stat">
+            <span class="label">Coverage</span>
+            <span class="value">24/7/365</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Response SLA</span>
+            <span class="value">NBD, 4-hr, 4-hr Onsite</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Engineering level</span>
+            <span class="value">L2 / L3 NetApp-Certified</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Parts coverage</span>
+            <span class="value">Included</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Contract term</span>
+            <span class="value">1, 2, or 3 year</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Savings vs. SupportEdge</span>
+            <span class="value">60&ndash;80%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. EOSL Strip -->
+  <div class="eosl-strip">
+    <div class="container">
+      <span class="eosl-label">Popular EOL models we cover</span>
+      <div class="eosl-chips">
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">FAS8200</span>
+          <span class="date">EOSL May 2024</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">AFF A300</span>
+          <span class="date">EOSL Jan 2024</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">FAS2650</span>
+          <span class="date">EOSL Nov 2023</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-red"></span>
+          <span class="model">E5760</span>
+          <span class="date">EOSL Aug 2022</span>
+        </div>
+        <div class="eosl-chip">
+          <span class="eosl-dot dot-amber"></span>
+          <span class="model">AFF A400</span>
+          <span class="date">EOSL Mar 2027</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Product Families Grid -->
+  <section class="families-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>NetApp Product Families We Support</h2>
+        <p>From legacy FAS controllers to current-generation AFF all-flash and SolidFire HCI nodes &mdash; Systain&reg; covers the full NetApp portfolio.</p>
+      </div>
+      <div class="families-grid">
+
+        <!-- Card 1: FAS Hybrid -->
+        <div class="family-card">
+          <div class="family-icon">&#128190;</div>
+          <div class="family-name">FAS Hybrid Arrays</div>
+          <p class="family-desc">FAS2000 and FAS8000 series unified hybrid storage &mdash; NAS and SAN from a single platform. Controller swaps, drive replacement, and shelf support included.</p>
+          <div class="family-models">
+            <span class="model-tag">FAS9000</span>
+            <span class="model-tag">FAS8300</span>
+            <span class="model-tag">FAS8200</span>
+            <span class="model-tag">FAS2750</span>
+            <span class="model-tag">FAS2720</span>
+          </div>
+        </div>
+
+        <!-- Card 2: AFF All-Flash -->
+        <div class="family-card">
+          <div class="family-icon">&#9889;</div>
+          <div class="family-name">AFF All-Flash Arrays</div>
+          <p class="family-desc">AFF A-Series all-flash arrays for latency-sensitive workloads. Full hardware maintenance including controller failover, NVMe drive replacement, and shelf support.</p>
+          <div class="family-models">
+            <span class="model-tag">AFF A800</span>
+            <span class="model-tag">AFF A700</span>
+            <span class="model-tag">AFF A400</span>
+            <span class="model-tag">AFF A300</span>
+            <span class="model-tag">AFF A200</span>
+          </div>
+        </div>
+
+        <!-- Card 3: E-Series SAN -->
+        <div class="family-card">
+          <div class="family-icon">&#128452;</div>
+          <div class="family-name">E-Series SAN</div>
+          <p class="family-desc">E-Series block storage arrays and EF-Series all-flash for high-throughput workloads. Hardware maintenance, controller pair support, and drive tray expansion.</p>
+          <div class="family-models">
+            <span class="model-tag">E5760</span>
+            <span class="model-tag">E5724</span>
+            <span class="model-tag">E2824</span>
+            <span class="model-tag">E2812</span>
+            <span class="model-tag">EF570</span>
+          </div>
+        </div>
+
+        <!-- Card 4: StorageGRID Object -->
+        <div class="family-card">
+          <div class="family-icon">&#127760;</div>
+          <div class="family-name">StorageGRID Object</div>
+          <p class="family-desc">StorageGRID appliance nodes for S3-compatible object storage. Hardware maintenance for SG5000 and SG6000 series appliance nodes.</p>
+          <div class="family-models">
+            <span class="model-tag">SG6060</span>
+            <span class="model-tag">SG5712</span>
+            <span class="model-tag">SG6000-CN</span>
+            <span class="model-tag">SG5760</span>
+            <span class="model-tag">SG100</span>
+          </div>
+        </div>
+
+        <!-- Card 5: SolidFire / HCI -->
+        <div class="family-card">
+          <div class="family-icon">&#128311;</div>
+          <div class="family-name">SolidFire / HCI</div>
+          <p class="family-desc">SolidFire all-flash scale-out nodes and NetApp HCI compute/storage nodes. Hardware maintenance for the physical layer of software-defined storage.</p>
+          <div class="family-models">
+            <span class="model-tag">SF9608</span>
+            <span class="model-tag">SF4805</span>
+            <span class="model-tag">H615C</span>
+            <span class="model-tag">H410S</span>
+            <span class="model-tag">H410C</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Don't see your model? -->
+        <div class="family-card family-card-cta">
+          <div class="cta-card-icon">&#128269;</div>
+          <div class="cta-card-heading">Don&rsquo;t see your model?</div>
+          <p class="cta-card-text">We support a wide range of NetApp hardware beyond what&rsquo;s listed here. Send us your asset list and we&rsquo;ll confirm coverage within one business day.</p>
+          <a href="/contact?type=coverage-check&vendor=netapp" class="cta-card-link">Check Your Model</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Why Systain® -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose Systain&reg; for NetApp?</h2>
+        <p>Purpose-built third-party maintenance &mdash; not a reseller add-on, not a break-fix desk.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-icon">&#128176;</span>
+          <div class="why-title">60&ndash;80% Cost Savings</div>
+          <p class="why-text">NetApp SupportEdge rates stay high long after hardware is paid off. Systain&reg; pricing reflects the actual cost of support &mdash; not the OEM&rsquo;s margin target.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#9889;</span>
+          <div class="why-title">4-Hour Onsite SLA</div>
+          <p class="why-text">NBD, 4-hour, and 4-hour onsite SLAs available &mdash; aligned to your recovery time objectives, not a standard tier.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#129504;</span>
+          <div class="why-title">NetApp-Certified Engineers</div>
+          <p class="why-text">Our storage team holds NetApp certifications across ONTAP, E-Series, and StorageGRID. You get platform specialists, not generalists.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#128230;</span>
+          <div class="why-title">Parts On Hand</div>
+          <p class="why-text">We stock NetApp-compatible drives, controllers, and shelf components so replacements ship same day without depot wait times.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Testimonial / Social Proof -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="proof-inner">
+        <div>
+          <p class="proof-quote">&ldquo;Our FAS arrays and E-Series SAN were all past NetApp SupportEdge eligibility. Systain&reg; covered everything and we saved 69% compared to what NetApp had quoted for an extended support option.&rdquo;</p>
+          <div class="proof-attr">&mdash; Storage Infrastructure Lead, Financial Services Firm</div>
+        </div>
+        <div class="proof-savings">
+          <span class="savings-number">69%</span>
+          <div class="savings-label">Average savings on NetApp maintenance</div>
+          <div class="savings-sub">vs. NetApp SupportEdge extended support quote</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to reduce your NetApp storage support costs?</h2>
+      <p>Send us your current SupportEdge renewal or asset list &mdash; we&rsquo;ll have a detailed comparison back to you within 24 hours.</p>
+      <div class="cta-actions">
+        <a href="/quote?vendor=netapp" class="cta-btn-white">Get a NetApp Quote</a>
+        <a href="/contact?type=asset-list&vendor=netapp" class="cta-btn-outline">Send Your Asset List</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 OSI Hardware Global. All rights reserved. &nbsp;|&nbsp; Systain&reg; is a registered trademark of OSI Hardware. &nbsp;|&nbsp; <a href="/privacy" style="color:var(--green-light);text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms" style="color:var(--green-light);text-decoration:none;">Terms of Service</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

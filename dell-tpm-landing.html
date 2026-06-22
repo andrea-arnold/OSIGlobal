@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dell EMC Third-Party Maintenance | Systain® by OSI Hardware</title>
+<style>
+:root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+.annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+.annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+.topbar a{color:var(--green-light);text-decoration:none;}
+.navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+.logo span{color:var(--green-light);}
+.nav-links{display:flex;list-style:none;}
+.nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+.nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+.nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+.breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+.breadcrumbs a{color:var(--green);text-decoration:none;}
+.breadcrumbs span{margin:0 6px;}
+.hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+.hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+.hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+.hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+.hero h1 .accent{color:var(--lime);}
+.hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+.btn-primary:hover{background:var(--green-light);}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+.hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+.proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+.proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.proof-stat:last-child{border-bottom:none;}
+.proof-stat .label{font-size:13px;color:#94a3b8;}
+.proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+.eosl-strip{background:var(--dark);padding:20px 0;}
+.eosl-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.eosl-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.eosl-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.eosl-chip{display:flex;align-items:center;gap:8px;background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 14px;}
+.eosl-chip .model{font-size:13px;font-weight:700;color:var(--white);font-family:monospace;}
+.eosl-chip .date{font-size:11px;color:#64748b;}
+.eosl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dot-red{background:var(--red);}
+.dot-amber{background:var(--amber);}
+.families-section{padding:56px 0;}
+.section-header{text-align:center;margin-bottom:40px;}
+.section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+.families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+.family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+.family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+.family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+.family-models{display:flex;flex-wrap:wrap;gap:6px;}
+.model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+.why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+.why-icon{font-size:28px;margin-bottom:12px;display:block;}
+.why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+.proof-section{padding:48px 0;}
+.proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+.proof-attr{font-size:13px;color:#64748b;}
+.proof-savings{text-align:center;}
+.savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+.savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+.savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+.cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+.cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+.cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+.cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+.footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+.family-card-cta{background:var(--gray-light);border:2px dashed var(--gray-mid);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.family-card-cta .family-name{color:var(--text-muted);}
+.family-card-cta .family-desc{color:var(--text-muted);}
+.family-card-cta a{display:inline-block;margin-top:12px;background:var(--green);color:white;padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:13px;}
+@media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+@media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- 1. Annotation Banner -->
+<div class="annotation">
+  VENDOR LANDING PAGE TEMPLATE — URL: <em>/third-party-maintenance/dell-emc/</em>
+</div>
+
+<!-- 2. Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div>
+      <a href="tel:18005551234">&#128222; 1-800-555-1234</a>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:support@osiglobal.com">&#9993; support@osiglobal.com</a>
+    </div>
+    <div>
+      <a href="/portal">Customer Portal</a>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="/quote">Get a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Sticky Nav -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">OSI<span>Global</span></div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/third-party-maintenance/" class="active">Third-Party Maintenance</a></li>
+      <li><a href="/vendors/">Vendors</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/quote/" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 4. Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="/">Home</a>
+    <span>›</span>
+    <a href="/third-party-maintenance/">Third-Party Maintenance</a>
+    <span>›</span>
+    Dell EMC
+  </div>
+</div>
+
+<!-- 5. Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-left">
+        <div class="hero-pill">Systain® for Dell EMC</div>
+        <h1>Keep Your Dell Infrastructure Running.<br><span class="accent">Without the ProSupport Price Tag.</span></h1>
+        <p class="hero-sub">Systain® delivers 24/7 L2/L3 engineering support for Dell PowerEdge servers, PowerStore and PowerVault storage, PowerSwitch networking, and VxRail HCI — typically 60–80% below Dell ProSupport pricing.</p>
+        <div class="hero-actions">
+          <a href="/quote/dell/" class="btn-primary">Get a Dell Quote</a>
+          <a href="/asset-list/" class="btn-secondary">Send Your Asset List</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-proof">
+          <div class="proof-title">Systain® Coverage at a Glance</div>
+          <div class="proof-stat">
+            <span class="label">Coverage</span>
+            <span class="value">24/7/365</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Response SLA</span>
+            <span class="value">NBD, 4-hr, 4-hr Onsite</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Engineering Level</span>
+            <span class="value">L2 / L3 Dell-Certified</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Parts Coverage</span>
+            <span class="value">Included</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Contract Term</span>
+            <span class="value">1, 2, or 3 Year</span>
+          </div>
+          <div class="proof-stat">
+            <span class="label">Savings vs. ProSupport</span>
+            <span class="value">60–80%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. EOSL Strip -->
+<div class="eosl-strip">
+  <div class="container">
+    <div class="eosl-label">Popular EOL models we cover</div>
+    <div class="eosl-chips">
+      <div class="eosl-chip">
+        <div class="eosl-dot dot-red"></div>
+        <span class="model">PowerEdge R730</span>
+        <span class="date">EOSL Sep 2023</span>
+      </div>
+      <div class="eosl-chip">
+        <div class="eosl-dot dot-red"></div>
+        <span class="model">PowerEdge R630</span>
+        <span class="date">EOSL Sep 2023</span>
+      </div>
+      <div class="eosl-chip">
+        <div class="eosl-dot dot-red"></div>
+        <span class="model">PowerEdge R720</span>
+        <span class="date">EOSL Jan 2022</span>
+      </div>
+      <div class="eosl-chip">
+        <div class="eosl-dot dot-amber"></div>
+        <span class="model">PowerEdge R740</span>
+        <span class="date">EOSL Dec 2026</span>
+      </div>
+      <div class="eosl-chip">
+        <div class="eosl-dot dot-red"></div>
+        <span class="model">PowerVault MD3400</span>
+        <span class="date">EOSL Mar 2022</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Product Families Grid -->
+<section class="families-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Dell Product Families We Support</h2>
+      <p>From 11th-gen PowerEdge rack servers to VxRail HCI appliances, Systain® covers the full Dell infrastructure stack.</p>
+    </div>
+    <div class="families-grid">
+
+      <!-- Card 1: PowerEdge Rack Servers -->
+      <div class="family-card">
+        <div class="family-icon">🖥️</div>
+        <div class="family-name">PowerEdge Rack Servers</div>
+        <p class="family-desc">R-Series and T-Series rack and tower servers from 11th through 16th generation. Parts, iDRAC support, and hardware diagnostics included.</p>
+        <div class="family-models">
+          <span class="model-tag">R750</span>
+          <span class="model-tag">R740</span>
+          <span class="model-tag">R640</span>
+          <span class="model-tag">R730</span>
+          <span class="model-tag">R630</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Blade & Modular -->
+      <div class="family-card">
+        <div class="family-icon">🗄️</div>
+        <div class="family-name">Blade &amp; Modular</div>
+        <p class="family-desc">PowerEdge M-Series blades and MX modular chassis. Full support for blade infrastructure including CMC and IOM components.</p>
+        <div class="family-models">
+          <span class="model-tag">MX750c</span>
+          <span class="model-tag">MX7000</span>
+          <span class="model-tag">M630</span>
+          <span class="model-tag">M640</span>
+          <span class="model-tag">VRTX</span>
+        </div>
+      </div>
+
+      <!-- Card 3: PowerStore & PowerVault -->
+      <div class="family-card">
+        <div class="family-icon">💾</div>
+        <div class="family-name">PowerStore &amp; PowerVault</div>
+        <p class="family-desc">Midrange and entry storage arrays — PowerStore, PowerVault, and SC-Series. Hardware maintenance, controller swaps, and drive replacement.</p>
+        <div class="family-models">
+          <span class="model-tag">PowerStore 500</span>
+          <span class="model-tag">PowerStore 1000</span>
+          <span class="model-tag">PowerVault ME4</span>
+          <span class="model-tag">SC5020</span>
+          <span class="model-tag">SC7020</span>
+        </div>
+      </div>
+
+      <!-- Card 4: PowerSwitch Networking -->
+      <div class="family-card">
+        <div class="family-icon">🔁</div>
+        <div class="family-name">PowerSwitch Networking</div>
+        <p class="family-desc">N-Series and S-Series data center and campus switching. Hardware replacement and configuration support for OS10-based platforms.</p>
+        <div class="family-models">
+          <span class="model-tag">S5248F-ON</span>
+          <span class="model-tag">S5296F-ON</span>
+          <span class="model-tag">N3248TE-ON</span>
+          <span class="model-tag">Z9264F-ON</span>
+          <span class="model-tag">N2248PX-ON</span>
+        </div>
+      </div>
+
+      <!-- Card 5: VxRail HCI -->
+      <div class="family-card">
+        <div class="family-icon">☁️</div>
+        <div class="family-name">VxRail HCI</div>
+        <p class="family-desc">Dell/VMware hyper-converged appliances — E, P, V, and S Series nodes. Hardware maintenance for the physical layer; coordinated support for vSAN and vSphere issues.</p>
+        <div class="family-models">
+          <span class="model-tag">VxRail E560</span>
+          <span class="model-tag">VxRail P570</span>
+          <span class="model-tag">VxRail V570</span>
+          <span class="model-tag">VxRail S570</span>
+        </div>
+      </div>
+
+      <!-- Card 6: Don't see your model? -->
+      <div class="family-card family-card-cta">
+        <div class="family-icon" style="background:transparent;font-size:28px;">🔍</div>
+        <div class="family-name">Don't see your model?</div>
+        <p class="family-desc">We support a wide range of Dell EMC hardware beyond what's listed here. Send us your asset list and we'll confirm coverage.</p>
+        <a href="/asset-list/">Send Your Asset List</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 8. Why Systain® Section -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Systain® for Dell Maintenance?</h2>
+      <p>Purpose-built third-party maintenance that matches or exceeds ProSupport — at a fraction of the cost.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">💰</span>
+        <div class="why-title">60–80% Cost Savings</div>
+        <p class="why-text">Dell ProSupport pricing climbs every renewal cycle. Systain® rates stay flat — and typically drop as a percentage of asset value over time.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <div class="why-title">4-Hour Onsite SLA</div>
+        <p class="why-text">NBD, 4-hour, and 4-hour onsite options. We match your SLA to the criticality of each system — not a one-size-fits-all tier.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🧠</span>
+        <div class="why-title">Dell-Certified Engineers</div>
+        <p class="why-text">Our team holds Dell certifications and maintains deep expertise across PowerEdge, PowerStore, and PowerSwitch product lines.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📦</span>
+        <div class="why-title">Stocked Parts Inventory</div>
+        <p class="why-text">We warehouse Dell-compatible parts so replacements ship same day — no waiting on Dell's depot or navigating supply constraints.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Testimonial / Social Proof Block -->
+<section class="proof-section">
+  <div class="container">
+    <div class="proof-inner">
+      <div>
+        <p class="proof-quote">"We had a mix of PowerEdge servers and PowerVault arrays all coming off ProSupport within the same quarter. Systain® put them all on one contract — we saved 68% and had a single number to call."</p>
+        <p class="proof-attr">— VP of Infrastructure, National Logistics Company</p>
+      </div>
+      <div class="proof-savings">
+        <span class="savings-number">68%</span>
+        <div class="savings-label">Average savings on Dell maintenance</div>
+        <div class="savings-sub">Based on customer-reported ProSupport renewal comparisons</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to cut your Dell maintenance costs?</h2>
+    <p>Upload your current ProSupport renewal quote or asset list and we'll have a comparison back to you within 24 hours.</p>
+    <div class="cta-actions">
+      <a href="/quote/dell/" class="cta-btn-white">Get a Dell Quote</a>
+      <a href="/asset-list/" class="cta-btn-outline">Send Your Asset List</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 OSI Hardware. All rights reserved. Systain® is a registered trademark of OSI Hardware. OSI Hardware is not affiliated with or endorsed by Dell Technologies.</p>
+  </div>
+</footer>
+
+</body>
+</html>
