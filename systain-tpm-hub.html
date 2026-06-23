@@ -73,7 +73,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark)
 /* ============================================================ */
 .vendor-section{padding:60px 0;background:var(--light);}
 .vendor-section .section-sub{margin-bottom:32px;}
-.vendors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.vendors-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
 .vendor-card{background:var(--white);border:1px solid var(--mid);border-radius:8px;padding:24px 20px;text-decoration:none;color:var(--dark);transition:all 0.2s;display:block;}
 .vendor-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(15,129,64,0.1);transform:translateY(-2px);}
 .vendor-logo-text{font-size:26px;font-weight:800;color:var(--dark);opacity:0.7;margin-bottom:10px;}
@@ -389,9 +389,17 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark)
         <div class="vendor-link">View supported Arista equipment &rarr;</div>
       </a>
 
-      <div class="more-oems-row">
+      <a href="extreme-networks-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">EXTREME</div>
+        <h3>Extreme Networks Maintenance</h3>
+        <p>ExtremeSwitching X series, Black Diamond chassis, SLX data center (ex-Brocade), VSP fabric (ex-Avaya), and ExtremeWireless APs.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Networking</span><span class="vendor-tag">Campus</span><span class="vendor-tag">Data Center</span></div>
+        <div class="vendor-link">View supported Extreme equipment &rarr;</div>
+      </a>
+
+      <div class="more-oems-row" style="grid-column:span 5;">
         <p>Plus <strong>15+ additional OEMs</strong></p>
-        <span class="oem-list">Extreme Networks &middot; Brocade &middot; APC &middot; VMware &middot; Infinidat &middot; NetGear &middot; Nokia &middot; Oracle &middot; Hitachi &middot; Quantum &middot; Fortinet &middot; Sun &middot; and more</span>
+        <span class="oem-list">Brocade &middot; APC &middot; VMware &middot; Infinidat &middot; NetGear &middot; Nokia &middot; Oracle &middot; Hitachi &middot; Quantum &middot; Fortinet &middot; Sun &middot; and more</span>
       </div>
 
     </div>
