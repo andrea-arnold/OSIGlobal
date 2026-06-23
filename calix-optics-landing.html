@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calix Compatible Transceivers & PON Optics | OSI Global</title>
+<style>
+:root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+.annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+.annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+.topbar a{color:var(--green-light);text-decoration:none;}
+.navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+.logo span{color:var(--green-light);}
+.nav-links{display:flex;list-style:none;}
+.nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+.nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+.nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+.breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+.breadcrumbs a{color:var(--green);text-decoration:none;}
+.breadcrumbs span{margin:0 6px;}
+.hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+.hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+.hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+.hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+.hero h1 .accent{color:var(--lime);}
+.hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+.btn-primary:hover{background:var(--green-light);}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+.hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+.proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+.proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.proof-stat:last-child{border-bottom:none;}
+.proof-stat .label{font-size:13px;color:#94a3b8;}
+.proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+.platform-strip{background:var(--dark);padding:20px 0;}
+.platform-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.platform-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.platform-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.platform-chip{background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--white);}
+.families-section{padding:56px 0;}
+.section-header{text-align:center;margin-bottom:40px;}
+.section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+.families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+.family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+.family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+.family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+.family-models{display:flex;flex-wrap:wrap;gap:6px;}
+.model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+.why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+.why-icon{font-size:28px;margin-bottom:12px;display:block;}
+.why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+.proof-section{padding:48px 0;}
+.proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+.proof-attr{font-size:13px;color:#64748b;}
+.proof-savings{text-align:center;}
+.savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+.savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+.savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+.cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+.cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+.cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+.cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+.footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+.family-card-cta{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #bbf7d0;border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;justify-content:center;}
+.family-card-cta .family-icon{background:#dcfce7;}
+.family-card-cta .family-name{color:var(--green-dark);}
+.family-card-cta .family-desc{color:#166534;}
+.family-card-cta .btn-primary{display:inline-block;margin-top:4px;align-self:flex-start;}
+@media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+@media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- Annotation -->
+<div class="annotation">
+  OPTICS LANDING PAGE — URL: <em>/optical-solutions/compatible-optics/calix/</em>
+</div>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <div class="container">
+    <span>&#128222; 1-800-OSI-GLOBAL &nbsp;|&nbsp; <a href="#">sales@osiglobal.com</a></span>
+    <span>Same-Day Quotes &nbsp;|&nbsp; Lifetime Warranty &nbsp;|&nbsp; <a href="#">Get a Quote</a></span>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">OSI <span>Global</span></div>
+    <ul class="nav-links">
+      <li><a href="#">TPM Services</a></li>
+      <li><a href="#" class="active">Optical Solutions</a></li>
+      <li><a href="#">Networking</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="#">Home</a><span>&#8250;</span>
+    <a href="#">Optical Solutions</a><span>&#8250;</span>
+    <a href="#">Compatible Optics</a><span>&#8250;</span>
+    Calix
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="hero-pill">Calix Compatible Optics</div>
+        <h1>Calix Compatible Transceivers &amp; PON Optics.<br><span class="accent">60&#8211;80% Below Calix List Price.</span></h1>
+        <p class="hero-sub">OSI Global stocks 230 Calix-compatible optical transceivers &#8212; SFP, SFP+, SFP28, GPON, and XGS-PON modules. Tested for compatibility with Calix E7-2, E9-2, AXOS, and GigaSpire platforms. Lifetime warranty. Same-day quotes.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Get a Same-Day Quote</a>
+          <a href="#" class="btn-secondary">Browse All SKUs</a>
+        </div>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-title">At a Glance</div>
+        <div class="proof-stat">
+          <span class="label">SKUs In Stock</span>
+          <span class="value">230</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Form Factors</span>
+          <span class="value">SFP through XGS-PON</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Warranty</span>
+          <span class="value">Lifetime</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Compatibility</span>
+          <span class="value">100% Tested</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Savings vs. OEM</span>
+          <span class="value">60&#8211;80%</span>
+        </div>
+        <div class="proof-stat">
+          <span class="label">Quote Turnaround</span>
+          <span class="value">Same Day</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Platform Strip -->
+<div class="platform-strip">
+  <div class="container">
+    <span class="platform-label">Compatible Platforms:</span>
+    <div class="platform-chips">
+      <span class="platform-chip">E7-2</span>
+      <span class="platform-chip">E9-2</span>
+      <span class="platform-chip">AXOS</span>
+      <span class="platform-chip">GigaSpire</span>
+      <span class="platform-chip">C7 Series</span>
+    </div>
+  </div>
+</div>
+
+<!-- Form Factor Cards -->
+<section class="families-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Shop by Form Factor</h2>
+      <p>Find the right Calix-compatible transceiver for your OLT platform and PON deployment.</p>
+    </div>
+    <div class="families-grid">
+
+      <!-- SFP 1G -->
+      <div class="family-card">
+        <div class="family-icon">&#128309;</div>
+        <div class="family-name">SFP &#8212; 1G</div>
+        <div class="family-desc">1G SFP modules for Calix E-Series and C7 uplinks. LX, SX, and BX options for metro and access network connectivity.</div>
+        <div class="family-models">
+          <span class="model-tag">SFP-1GE-LX</span>
+          <span class="model-tag">SFP-1GE-SX</span>
+          <span class="model-tag">SFP-1GE-BX-D</span>
+          <span class="model-tag">SFP-1GE-T</span>
+          <span class="model-tag">CWDM-SFP-1470</span>
+        </div>
+      </div>
+
+      <!-- SFP+ 10G -->
+      <div class="family-card">
+        <div class="family-icon">&#9889;</div>
+        <div class="family-name">SFP+ &#8212; 10G</div>
+        <div class="family-desc">10G SFP+ for E7-2 and E9-2 10G uplink slots. SR, LR, and ER options for aggregation and metro connectivity.</div>
+        <div class="family-models">
+          <span class="model-tag">SFP-10G-SR</span>
+          <span class="model-tag">SFP-10G-LR</span>
+          <span class="model-tag">SFP-10G-ER</span>
+          <span class="model-tag">SFP-10G-BXD</span>
+          <span class="model-tag">SFP-10G-CWDM-1470</span>
+        </div>
+      </div>
+
+      <!-- SFP28 25G -->
+      <div class="family-card">
+        <div class="family-icon">&#128309;</div>
+        <div class="family-name">SFP28 &#8212; 25G</div>
+        <div class="family-desc">25G SFP28 for E9-2 high-capacity uplinks and AXOS next-gen aggregation interfaces.</div>
+        <div class="family-models">
+          <span class="model-tag">SFP-25G-SR</span>
+          <span class="model-tag">SFP-25G-LR</span>
+          <span class="model-tag">SFP-25G-BX-D</span>
+          <span class="model-tag">SFP-25G-ER</span>
+          <span class="model-tag">SFP-25G-T</span>
+        </div>
+      </div>
+
+      <!-- GPON -->
+      <div class="family-card">
+        <div class="family-icon">&#127760;</div>
+        <div class="family-name">GPON &#8212; 2.5G/1.25G</div>
+        <div class="family-desc">GPON SFP modules for Calix E7-2 and E9-2 OLT ports. Class B+, Class C+, and WDM options for FTTH and MDU deployments.</div>
+        <div class="family-models">
+          <span class="model-tag">GPON-SFP-CLASS-B+</span>
+          <span class="model-tag">GPON-SFP-CLASS-C+</span>
+          <span class="model-tag">GPON-WDM-SFP</span>
+          <span class="model-tag">GPON-OLT-SFP-SC</span>
+          <span class="model-tag">GPON-SFP-STICK</span>
+        </div>
+      </div>
+
+      <!-- XGS-PON 10G -->
+      <div class="family-card">
+        <div class="family-icon">&#128994;</div>
+        <div class="family-name">XGS-PON &#8212; 10G</div>
+        <div class="family-desc">10G XGS-PON SFP modules for symmetrical 10G FTTH on Calix AXOS and next-gen E9-2 OLT platforms. Supports coexistence with legacy GPON.</div>
+        <div class="family-models">
+          <span class="model-tag">XGS-PON-SFP-10G</span>
+          <span class="model-tag">XGS-PON-OLT-SFP</span>
+          <span class="model-tag">XGS-PON-STICK</span>
+          <span class="model-tag">XGS-PON-COEXIST</span>
+          <span class="model-tag">XGS-PON-CLASS-C+</span>
+        </div>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="family-card family-card-cta">
+        <div class="family-icon">&#128203;</div>
+        <div class="family-name">Need NG-PON2 or other?</div>
+        <div class="family-desc">We source specialty PON optics including NG-PON2 and Combo PON modules. Contact us for custom requirements.</div>
+        <a href="#" class="btn-primary">Get a Quote</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Why OSI Global -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why OSI Global?</h2>
+      <p>The trusted source for compatible optics across service provider and enterprise networks.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">&#9989;</span>
+        <div class="why-title">Lifetime Warranty</div>
+        <div class="why-text">Every optic is covered by our lifetime warranty. If it fails, we replace it &#8212; no questions asked.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">&#128230;</span>
+        <div class="why-title">Free Coding Box</div>
+        <div class="why-text">We program modules to match your platform&#8217;s OUI so they appear native in your management system.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">&#9889;</span>
+        <div class="why-title">Same-Day Quotes</div>
+        <div class="why-text">Send us your BOM and we&#8217;ll return pricing the same business day &#8212; often within the hour.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">&#128269;</span>
+        <div class="why-title">100% Compatibility Tested</div>
+        <div class="why-text">Every SKU is validated against the target platform before it ships. Zero surprises in the field.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial / Proof Section -->
+<section class="proof-section">
+  <div class="container">
+    <div class="proof-inner">
+      <div>
+        <div class="proof-quote">&#8220;Calix GPON and XGS-PON optics are expensive from the OEM. OSI Global stocks compatible modules that work perfectly in our E7-2 and E9-2 OLTs. We&#8217;ve saved 67% across our FTTH buildout.&#8221;</div>
+        <div class="proof-attr">&#8212; VP of Network Operations, Rural Broadband Provider</div>
+      </div>
+      <div class="proof-savings">
+        <span class="savings-number">67%</span>
+        <div class="savings-label">Below Calix list price</div>
+        <div class="savings-sub">Verified customer savings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to quote your Calix optics?</h2>
+    <p>Send us your part numbers or OLT platform details &#8212; same-day pricing guaranteed.</p>
+    <div class="cta-actions">
+      <a href="#" class="cta-btn-white">Get a Same-Day Quote</a>
+      <a href="#" class="cta-btn-outline">Contact Sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 OSI Global. All rights reserved. &nbsp;|&nbsp; Compatible optics for Calix E7-2, E9-2, AXOS, GigaSpire, and C7 platforms.</p>
+  </div>
+</footer>
+
+</body>
+</html>
