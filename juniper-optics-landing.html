@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juniper Compatible Optical Transceivers — OSI Global</title>
+<style>
+:root{--dark:#0d1117;--dark2:#161b22;--green-dark:#14532d;--green:#16a34a;--green-light:#22c55e;--lime:#84cc16;--gray-light:#f4f6f9;--gray-mid:#e2e8f0;--text:#1e293b;--text-muted:#64748b;--white:#ffffff;--red:#dc2626;--amber:#d97706;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.6;background:var(--white);}
+.annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+.annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.topbar{background:var(--dark);color:#94a3b8;font-size:13px;padding:6px 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+.topbar a{color:var(--green-light);text-decoration:none;}
+.navbar{background:var(--dark2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:22px;font-weight:800;color:var(--white);padding:16px 0;}
+.logo span{color:var(--green-light);}
+.nav-links{display:flex;list-style:none;}
+.nav-links li a{color:#cbd5e1;text-decoration:none;padding:20px 16px;display:block;font-size:14px;font-weight:500;transition:all 0.2s;}
+.nav-links li a:hover,.nav-links li a.active{color:var(--white);background:rgba(34,197,94,0.12);border-bottom:3px solid var(--green-light);}
+.nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:50px!important;margin:12px 0 12px 8px;padding:10px 22px!important;border-bottom:none!important;}
+.breadcrumbs{padding:14px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--gray-mid);}
+.breadcrumbs a{color:var(--green);text-decoration:none;}
+.breadcrumbs span{margin:0 6px;}
+.hero{background:linear-gradient(135deg,#0d1117 0%,#0f1f2e 60%,#1a2e1a 100%);color:var(--white);padding:56px 0 52px;}
+.hero-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:center;}
+.hero-pill{display:inline-block;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:var(--green-light);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
+.hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:16px;}
+.hero h1 .accent{color:var(--lime);}
+.hero-sub{font-size:16px;color:#94a3b8;line-height:1.75;margin-bottom:28px;max-width:580px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--green);color:white;padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:background 0.2s;}
+.btn-primary:hover{background:var(--green-light);}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:15px;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--green-light);color:var(--green-light);}
+.hero-proof{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;}
+.proof-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#64748b;margin-bottom:16px;font-weight:600;}
+.proof-stat{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.proof-stat:last-child{border-bottom:none;}
+.proof-stat .label{font-size:13px;color:#94a3b8;}
+.proof-stat .value{font-size:14px;font-weight:700;color:var(--green-light);}
+.platform-strip{background:var(--dark);padding:20px 0;}
+.platform-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.platform-label{font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.platform-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.platform-chip{background:#1e2530;border:1px solid #2d3748;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--white);}
+.families-section{padding:56px 0;}
+.section-header{text-align:center;margin-bottom:40px;}
+.section-header h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.section-header p{font-size:15px;color:var(--text-muted);max-width:580px;margin:0 auto;}
+.families-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.family-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:28px 24px;transition:all 0.2s;}
+.family-card:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+.family-icon{width:44px;height:44px;border-radius:10px;background:var(--gray-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px;}
+.family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+.family-models{display:flex;flex-wrap:wrap;gap:6px;}
+.model-tag{font-size:11px;font-weight:600;background:var(--gray-light);color:var(--text-muted);padding:3px 10px;border-radius:12px;font-family:monospace;}
+.why-section{background:var(--gray-light);padding:56px 0;border-top:1px solid var(--gray-mid);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.why-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:10px;padding:24px 20px;text-align:center;}
+.why-icon{font-size:28px;margin-bottom:12px;display:block;}
+.why-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.why-text{font-size:13px;color:var(--text-muted);line-height:1.55;}
+.proof-section{padding:48px 0;}
+.proof-inner{background:var(--dark);border-radius:12px;padding:40px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.proof-quote{font-size:18px;font-style:italic;color:var(--white);line-height:1.65;margin-bottom:16px;}
+.proof-attr{font-size:13px;color:#64748b;}
+.proof-savings{text-align:center;}
+.savings-number{font-size:52px;font-weight:800;color:var(--lime);display:block;line-height:1;}
+.savings-label{font-size:14px;color:#94a3b8;margin-top:6px;}
+.savings-sub{font-size:12px;color:#4b5563;margin-top:4px;}
+.cta-banner{background:linear-gradient(135deg,var(--green-dark) 0%,#166534 100%);color:white;padding:56px 0;text-align:center;}
+.cta-banner h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+.cta-banner p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-white{display:inline-block;background:white;color:var(--green-dark);padding:15px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;}
+.cta-btn-outline{display:inline-block;background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:15px 36px;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;}
+.footer{background:var(--dark);color:#64748b;padding:28px 0;font-size:13px;text-align:center;}
+.family-card-cta{background:var(--gray-light);border:2px dashed var(--gray-mid);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;transition:all 0.2s;}
+.family-card-cta:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(22,163,74,0.08);}
+.family-card-cta .family-icon{background:var(--white);}
+.family-card-cta .family-name{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.family-card-cta .family-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:20px;}
+.cta-card-btn{background:var(--green);color:var(--white);padding:11px 24px;border-radius:50px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;transition:background 0.2s;}
+.cta-card-btn:hover{background:var(--green-light);}
+@media(max-width:960px){.hero-layout{grid-template-columns:1fr;}.hero-proof{display:none;}.families-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.proof-inner{grid-template-columns:1fr;}}
+@media(max-width:600px){.families-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- URL annotation -->
+<div class="annotation">Page URL: <em>/optical-solutions/compatible-optics/juniper/</em></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <span>OSI Global — Optical &amp; Hardware Solutions for Enterprise Networks</span>
+    <span><a href="/contact/">Contact Sales</a> &nbsp;|&nbsp; <a href="tel:+18005551234">1-800-555-1234</a></span>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">OSI <span>Global</span></div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/optical-solutions/" class="active">Optical Solutions</a></li>
+      <li><a href="/tpm/">TPM Services</a></li>
+      <li><a href="/vendors/">Vendors</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="/">Home</a><span>›</span>
+    <a href="/optical-solutions/">Optical Solutions</a><span>›</span>
+    <a href="/optical-solutions/compatible-optics/">Compatible Optics</a><span>›</span>
+    Juniper
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <div>
+        <div class="hero-pill">Juniper Compatible Optics</div>
+        <h1>Juniper Compatible Transceivers &amp; DACs.<br><span class="accent">60–80% Below Juniper List Price.</span></h1>
+        <p class="hero-sub">OSI Global stocks and tests ~820 Juniper-compatible optical transceivers — SFP, SFP+, QSFP+, QSFP28, QSFP-DD, and DAC cables. Every module is tested for full compatibility with Juniper MX, QFX, EX, SRX, and PTX platforms. Lifetime warranty. Same-day quotes.</p>
+        <div class="hero-actions">
+          <a href="/contact/" class="btn-primary">Request Same-Day Quote</a>
+          <a href="#form-factors" class="btn-secondary">Browse Form Factors</a>
+        </div>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-title">At a Glance</div>
+        <div class="proof-stat"><span class="label">SKUs in Stock</span><span class="value">820</span></div>
+        <div class="proof-stat"><span class="label">Form Factors</span><span class="value">SFP through QSFP-DD</span></div>
+        <div class="proof-stat"><span class="label">Warranty</span><span class="value">Lifetime</span></div>
+        <div class="proof-stat"><span class="label">Compatibility</span><span class="value">100% Tested</span></div>
+        <div class="proof-stat"><span class="label">Savings vs. OEM</span><span class="value">60–80%</span></div>
+        <div class="proof-stat"><span class="label">Quote Turnaround</span><span class="value">Same Day</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Platform strip -->
+<div class="platform-strip">
+  <div class="container">
+    <span class="platform-label">Tested Platforms:</span>
+    <div class="platform-chips">
+      <div class="platform-chip">MX Series</div>
+      <div class="platform-chip">QFX Series</div>
+      <div class="platform-chip">EX Series</div>
+      <div class="platform-chip">SRX Series</div>
+      <div class="platform-chip">PTX Series</div>
+    </div>
+  </div>
+</div>
+
+<!-- Form Factors -->
+<section class="families-section" id="form-factors">
+  <div class="container">
+    <div class="section-header">
+      <h2>Juniper-Compatible Form Factors</h2>
+      <p>OSI-compatible modules stocked and tested for every major Juniper platform — from access-layer SFPs to 400G QSFP-DD spine optics.</p>
+    </div>
+    <div class="families-grid">
+
+      <!-- SFP 1G -->
+      <div class="family-card">
+        <div class="family-icon">🔌</div>
+        <div class="family-name">SFP 1G</div>
+        <div class="family-desc">OSI-compatible 1G SFPs for EX and SRX access-layer deployments. Supports multimode, single-mode, and copper interfaces.</div>
+        <div class="family-models">
+          <span class="model-tag">SFP-1GE-SX</span>
+          <span class="model-tag">SFP-1GE-LX</span>
+          <span class="model-tag">SFP-1GE-T</span>
+          <span class="model-tag">SFP-1GE-LH</span>
+          <span class="model-tag">SFP-1GE-LX40K</span>
+        </div>
+      </div>
+
+      <!-- SFP+ 10G -->
+      <div class="family-card">
+        <div class="family-icon">⚡</div>
+        <div class="family-name">SFP+ 10G</div>
+        <div class="family-desc">OSI-compatible 10G SFP+ modules for EX, QFX, and MX platforms. SR, LR, ER, ZR, and copper variants in stock.</div>
+        <div class="family-models">
+          <span class="model-tag">SFP-10GE-SR</span>
+          <span class="model-tag">SFP-10GE-LR</span>
+          <span class="model-tag">SFP-10GE-ER</span>
+          <span class="model-tag">SFPP-10GE-ZR</span>
+          <span class="model-tag">SFP-10GE-T</span>
+        </div>
+      </div>
+
+      <!-- QSFP+ 40G -->
+      <div class="family-card">
+        <div class="family-icon">🔷</div>
+        <div class="family-name">QSFP+ 40G</div>
+        <div class="family-desc">OSI-compatible 40G QSFP+ for QFX and MX uplinks. SR4, LR4, ESR4, and DAC/AOC assemblies available.</div>
+        <div class="family-models">
+          <span class="model-tag">QSFP-40G-SR4</span>
+          <span class="model-tag">QSFP-40G-LR4</span>
+          <span class="model-tag">QSFP-40G-ESR4</span>
+          <span class="model-tag">QSFP-40G-DAC-1M</span>
+          <span class="model-tag">QSFP-40G-AOC1M</span>
+        </div>
+      </div>
+
+      <!-- QSFP28 100G -->
+      <div class="family-card">
+        <div class="family-icon">🚀</div>
+        <div class="family-name">QSFP28 100G</div>
+        <div class="family-desc">OSI-compatible 100G QSFP28 for PTX and QFX 10000 deployments. SR4, LR4, ER4, CWDM4, and DR variants stocked.</div>
+        <div class="family-models">
+          <span class="model-tag">QSFP-100G-SR4</span>
+          <span class="model-tag">QSFP-100G-LR4</span>
+          <span class="model-tag">QSFP-100G-ER4</span>
+          <span class="model-tag">QSFP-100G-CWDM4</span>
+          <span class="model-tag">QSFP-100G-DR</span>
+        </div>
+      </div>
+
+      <!-- QSFP-DD 400G -->
+      <div class="family-card">
+        <div class="family-icon">💎</div>
+        <div class="family-name">QSFP-DD 400G</div>
+        <div class="family-desc">OSI-compatible 400G QSFP-DD for PTX10003 and QFX5220 spine deployments. DR4, LR4, FR4, SR8, and ZR variants available.</div>
+        <div class="family-models">
+          <span class="model-tag">QSFP-DD-400G-DR4</span>
+          <span class="model-tag">QSFP-DD-400G-LR4</span>
+          <span class="model-tag">QSFP-DD-400G-FR4</span>
+          <span class="model-tag">QSFP-DD-400G-SR8</span>
+          <span class="model-tag">QSFP-DD-400G-ZR</span>
+        </div>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="family-card-cta">
+        <div>
+          <div class="family-icon">🔗</div>
+          <div class="family-name">Need a DAC or AOC?</div>
+          <div class="family-desc">We stock passive DAC, active DAC, and AOC assemblies for all Juniper platforms — 1m through 30m. Custom lengths available on request.</div>
+        </div>
+        <a href="/contact/" class="cta-card-btn">Request DAC/AOC Pricing</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Why OSI -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Source Juniper Optics from OSI Global?</h2>
+      <p>Every compatible optic we ship is tested against actual Juniper hardware — full platform compatibility, lifetime warranty, no questions asked.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🧪</span>
+        <div class="why-title">Hardware-Tested Compatibility</div>
+        <div class="why-text">Every module is validated against real Juniper MX, QFX, EX, SRX, and PTX hardware before it ships — not just spec-sheet matched.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🛡️</span>
+        <div class="why-title">Lifetime Warranty</div>
+        <div class="why-text">All OSI-compatible optics carry a lifetime warranty. If a module ever fails, we replace it — no RMA hoops, no expiration date.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💰</span>
+        <div class="why-title">60–80% Below OEM List</div>
+        <div class="why-text">Stop paying Juniper list price. OSI Global sources and stocks optics at a fraction of the cost — with the same performance guarantee.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <div class="why-title">Same-Day Quotes</div>
+        <div class="why-text">Send us your part number list or describe your deployment. We'll respond with pricing the same business day — no waiting, no back-and-forth.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proof / Testimonial -->
+<section class="proof-section">
+  <div class="container">
+    <div class="proof-inner">
+      <div>
+        <p class="proof-quote">"Replaced our entire QFX 10000 spine optics with OSI Global modules. Zero compatibility issues — every module came up clean. We cut our optics spend by 68%."</p>
+        <div class="proof-attr">— Network Architect, Tier 1 Service Provider</div>
+      </div>
+      <div class="proof-savings">
+        <span class="savings-number">68%</span>
+        <div class="savings-label">Below Juniper list price</div>
+        <div class="savings-sub">On a 150+ module QFX 10000 spine refresh</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to quote your Juniper optics?</h2>
+    <p>Send us your part number list or describe your deployment and we'll have same-day pricing ready.</p>
+    <div class="cta-actions">
+      <a href="/contact/" class="cta-btn-white">Request a Quote</a>
+      <a href="/optical-solutions/compatible-optics/" class="cta-btn-outline">Browse All Vendors</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 OSI Global. All rights reserved. &nbsp;|&nbsp; <a href="/privacy/" style="color:var(--green-light);text-decoration:none;">Privacy Policy</a> &nbsp;|&nbsp; <a href="/contact/" style="color:var(--green-light);text-decoration:none;">Contact Sales</a></p>
+    <p style="margin-top:8px;font-size:12px;color:#374151;">All trademarks and brand names are the property of their respective owners. OSI Global is not affiliated with or endorsed by Juniper Networks. Compatible optics are independently sourced and tested by OSI Global.</p>
+  </div>
+</footer>
+
+</body>
+</html>
