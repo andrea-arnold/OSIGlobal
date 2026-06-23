@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYSTAIN® Third Party Maintenance - OSI Global</title>
+<meta name="description" content="Expired OEM contract? Third party maintenance solutions help you cut costs while ensuring expert support for your IT infrastructure.">
+<style>
+:root{
+  --green:#0F8140;--green-dark:#0a5c2e;--green-light:#16a34a;
+  --white:#ffffff;--light:#f4f6f9;--mid:#e2e8f0;
+  --dark:#1e293b;--muted:#64748b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--dark);line-height:1.6;background:var(--white);}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+/* ANNOTATION */
+.annotation{background:#fffbeb;border:2px dashed #f59e0b;color:#92400e;padding:12px 20px;font-size:14px;text-align:center;font-weight:500;}
+.annotation em{font-style:normal;background:#fef3c7;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:13px;}
+
+/* TOPBAR */
+.topbar{background:#1a1a2e;color:#94a3b8;font-size:13px;padding:8px 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+.topbar a{color:#4ade80;text-decoration:none;}
+
+/* NAVBAR */
+.navbar{background:#fff;border-bottom:2px solid var(--green);padding:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+.navbar .container{display:flex;justify-content:space-between;align-items:center;}
+.logo img{height:44px;padding:10px 0;}
+.logo-text{font-size:22px;font-weight:800;color:var(--dark);padding:14px 0;}
+.logo-text span{color:var(--green);}
+.nav-links{display:flex;list-style:none;}
+.nav-links li a{color:var(--dark);text-decoration:none;padding:18px 14px;display:block;font-size:14px;font-weight:500;transition:color 0.2s;}
+.nav-links li a:hover,.nav-links li a.active{color:var(--green);}
+.nav-cta{background:var(--green)!important;color:var(--white)!important;border-radius:4px!important;margin:10px 0;padding:8px 18px!important;}
+.nav-cta:hover{background:var(--green-dark)!important;}
+
+/* HERO */
+.hero{padding:60px 0 48px;background:var(--white);}
+.hero-eyebrow{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;}
+.systain-logo{margin-bottom:12px;}
+.systain-logo img{height:48px;}
+.systain-logo-text{font-size:28px;font-weight:900;color:var(--green);letter-spacing:2px;}
+.hero h1{font-size:36px;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:16px;max-width:700px;}
+.hero p{font-size:17px;color:var(--muted);max-width:660px;margin-bottom:28px;line-height:1.7;}
+.hero img.hero-img{width:100%;border-radius:10px;margin-top:32px;display:block;}
+.btn-primary{background:var(--green);color:var(--white);padding:13px 28px;border-radius:6px;font-weight:700;text-decoration:none;font-size:15px;display:inline-block;}
+.btn-primary:hover{background:var(--green-dark);}
+
+/* BENEFITS */
+.benefits-section{padding:60px 0;background:var(--light);}
+.section-title{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:10px;}
+.section-sub{font-size:15px;color:var(--muted);margin-bottom:32px;max-width:640px;}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.benefit-item{background:var(--white);border:1px solid var(--mid);border-radius:8px;padding:22px 18px;}
+.benefit-item h3{font-size:15px;font-weight:700;color:var(--green);margin-bottom:6px;}
+.benefit-item p{font-size:14px;color:var(--muted);line-height:1.6;}
+
+/* COMPARISON TABLE */
+.comparison-section{padding:60px 0;background:var(--white);}
+.compare-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px;}
+.compare-table th{background:var(--dark);color:var(--white);padding:13px 16px;text-align:left;font-size:13px;font-weight:700;}
+.compare-table td{padding:12px 16px;border-bottom:1px solid var(--mid);vertical-align:top;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table td:first-child{font-weight:600;}
+.osi-col{background:#f0fdf4;}
+.check{color:var(--green);font-weight:700;}
+.cross{color:#dc2626;}
+
+/* ============================================================ */
+/* VENDOR SECTION — inserted from supported-equipment hub       */
+/* ============================================================ */
+.vendor-section{padding:60px 0;background:var(--light);}
+.vendor-section .section-sub{margin-bottom:32px;}
+.vendors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.vendor-card{background:var(--white);border:1px solid var(--mid);border-radius:8px;padding:24px 20px;text-decoration:none;color:var(--dark);transition:all 0.2s;display:block;}
+.vendor-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(15,129,64,0.1);transform:translateY(-2px);}
+.vendor-logo-text{font-size:26px;font-weight:800;color:var(--dark);opacity:0.7;margin-bottom:10px;}
+.vendor-card h3{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.vendor-card:hover h3{color:var(--green);}
+.vendor-card p{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px;}
+.vendor-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.vendor-tag{font-size:11px;background:var(--light);color:var(--muted);padding:3px 10px;border-radius:12px;font-weight:500;}
+.vendor-link{font-size:13px;color:var(--green);font-weight:600;}
+.more-oems-row{grid-column:span 3;background:var(--white);border:1px solid var(--mid);border-radius:8px;padding:20px 24px;text-align:center;}
+.more-oems-row p{font-size:14px;color:var(--muted);margin-bottom:4px;}
+.more-oems-row .oem-list{font-size:13px;color:var(--muted);}
+.more-oems-row strong{color:var(--green);font-size:18px;}
+
+/* LOGOS */
+.logos-section{padding:40px 0;background:var(--light);overflow:hidden;}
+.logos-section p{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:center;margin-bottom:20px;}
+.logos-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.logo-chip{font-size:13px;font-weight:700;color:#94a3b8;padding:8px 14px;border:1px solid var(--mid);border-radius:5px;background:var(--white);}
+
+/* TESTIMONIAL */
+.testimonial-section{padding:60px 0;background:var(--white);}
+.testi-inner{background:var(--light);border-radius:10px;padding:36px 40px;max-width:800px;margin:0 auto;text-align:center;}
+.testi-inner blockquote{font-size:20px;font-weight:600;color:var(--dark);line-height:1.6;margin-bottom:16px;}
+.testi-inner cite{font-size:14px;color:var(--muted);}
+
+/* STATS */
+.stats-section{padding:48px 0;background:var(--green);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+.stat-item .num{font-size:40px;font-weight:800;color:var(--white);}
+.stat-item .lbl{font-size:13px;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;}
+
+/* PORTAL */
+.portal-section{padding:60px 0;background:var(--light);}
+.portal-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.portal-section h2{font-size:24px;font-weight:800;color:var(--dark);margin-bottom:14px;}
+.portal-section p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+.portal-features{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.portal-features li{font-size:14px;color:var(--muted);padding-left:20px;position:relative;}
+.portal-features li::before{content:'✓';color:var(--green);font-weight:700;position:absolute;left:0;}
+.portal-img{background:var(--dark);border-radius:10px;padding:20px;}
+.portal-img img{width:100%;border-radius:6px;}
+
+/* FAQ */
+.faq-section{padding:60px 0;background:var(--white);}
+.faq-section .section-title{margin-bottom:24px;}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.faq-item{border-bottom:1px solid var(--mid);padding-bottom:18px;}
+.faq-item h4{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.faq-item p{font-size:14px;color:var(--muted);line-height:1.6;}
+
+/* CONTACT CTA */
+.cta-section{padding:56px 0;background:var(--green);text-align:center;}
+.cta-section h2{font-size:28px;font-weight:800;color:var(--white);margin-bottom:10px;}
+.cta-section p{font-size:16px;color:rgba(255,255,255,0.9);margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;}
+.btn-white{background:var(--white);color:var(--green-dark);padding:13px 30px;border-radius:6px;font-weight:700;text-decoration:none;font-size:15px;display:inline-block;}
+
+/* FOOTER */
+.footer{background:#1a1a2e;color:#64748b;padding:40px 0 20px;font-size:13px;}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:28px;}
+.footer-logo-text{font-size:20px;font-weight:800;color:#fff;margin-bottom:10px;}
+.footer-logo-text span{color:#4ade80;}
+.footer-inner p{color:#64748b;line-height:1.7;max-width:280px;}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;margin-bottom:12px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{color:#64748b;text-decoration:none;}
+.footer-col ul li a:hover{color:#4ade80;}
+.footer-bottom{border-top:1px solid #2d3748;padding-top:18px;display:flex;justify-content:space-between;}
+.footer-bottom a{color:#64748b;text-decoration:none;margin-left:16px;}
+</style>
+</head>
+<body>
+
+<!-- ANNOTATION -->
+<div class="annotation">
+  &#128205; <strong>PAGE MOCKUP</strong> &mdash; Replaces <em>osiglobal.com/systain-third-party-maintenance/</em> — vendor navigation added from former supported-equipment hub
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <span>&#128222; +1 (866) 602-4674 &nbsp;|&nbsp; &#128231; sales@osiglobal.com</span>
+    <span><a href="https://support.systain.io">Systain Login</a> &nbsp;|&nbsp; <a href="https://osiglobal.com/get-a-quote">Get a Quote</a></span>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo-text">OSI <span>Global</span></div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Services</a></li>
+      <li><a href="https://osiglobal.com/optical-solutions/">Products</a></li>
+      <li><a href="https://osiglobal.com/catalogs/">Catalogs</a></li>
+      <li><a href="https://osiglobal.com/about/">About</a></li>
+      <li><a href="https://osiglobal.com/blog/">Resources</a></li>
+      <li><a href="https://osiglobal.com/get-a-quote" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Third Party Maintenance</div>
+    <div class="systain-logo-text">SYSTAIN®</div>
+    <h1>Third Party Maintenance Support for networking, servers, storage and more.</h1>
+    <p>Keep your infrastructure running strong with expert support and flexible SLAs from a privately owned team that puts customers first.</p>
+    <a href="#contactus" class="btn-primary">Request A Quote</a>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="container">
+    <h2 class="section-title">Comprehensive Third Party Maintenance Benefits</h2>
+    <p class="section-sub">When you choose OSI Global's third party maintenance services, you unlock a range of tailored benefits designed to keep your infrastructure running smoothly and efficiently.</p>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <h3>24x7x365 TAC Coverage</h3>
+        <p>Continuous support whenever you need it.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Expert Level 2/3 Resources</h3>
+        <p>All inquiries are handled by highly skilled professionals.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Accelerated Escalation Process</h3>
+        <p>Ensuring swift resolution of critical issues.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Hardware Replacement</h3>
+        <p>Reliable, prompt hardware replacement to minimize downtime.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Flexible SLAs</h3>
+        <p>Options include Next Business Day (NBD), 4-hour, and 4-hour with on-site technician services.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Global Reach</h3>
+        <p>Comprehensive support wherever your operations are located.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>EOL Product Support</h3>
+        <p>Extended support for End-of-Life products, ensuring longevity and reliability.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Hybrid Strategy</h3>
+        <p>Delivering solutions that go beyond traditional Value-Added Resellers (VARs).</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Systain® Contract and Asset Management Portal</h3>
+        <p>Streamlined contract and asset management through our advanced Systain® platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY OSI GLOBAL + COMPARISON -->
+<section class="comparison-section">
+  <div class="container">
+    <h2 class="section-title">Why OSI Global?</h2>
+    <p class="section-sub">There are plenty of third-party maintenance providers out there, but not all of them deliver the service, speed, and transparency your infrastructure demands. OSI Global is the preferred choice for organizations that expect more than generic support and canned responses.</p>
+    <h3 style="font-size:18px;font-weight:700;color:var(--dark);margin-bottom:16px;">Side-by-Side Comparison</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:16px;">See how OSI Global stacks up against OEM support and other TPM providers.</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="osi-col">OSI Global</th>
+          <th>OEM</th>
+          <th>Other TPM Providers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>24/7 Direct Engineer Access</td>
+          <td class="osi-col"><span class="check">✅</span> Always available; no waiting, no escalations</td>
+          <td><span class="cross">❌</span> Limited access, tiered response structure</td>
+          <td>Available in some cases, but often routed through scripted tiers</td>
+        </tr>
+        <tr>
+          <td>Customizable SLAs</td>
+          <td class="osi-col"><span class="check">✅</span> SLAs tailored to your risk, environment, and budget</td>
+          <td><span class="cross">❌</span> Fixed SLAs, one-size-fits-all</td>
+          <td>SLAs often templated with limited flexibility</td>
+        </tr>
+        <tr>
+          <td>Spare Parts Strategy</td>
+          <td class="osi-col"><span class="check">✅</span> Full transparency; customers provide input on parts selection and location</td>
+          <td><span class="cross">❌</span> Standardized spare practices; no visibility or customization</td>
+          <td>Limited customization and visibility into sparing strategy</td>
+        </tr>
+        <tr>
+          <td>Full Lifecycle Coverage</td>
+          <td class="osi-col"><span class="check">✅</span> From current generation to deep EOSL; no end date on support; includes ITAD</td>
+          <td><span class="cross">❌</span> Only supports currently sold or OEM-supported gear</td>
+          <td>Coverage varies; often lacks EOSL, hardware, or ITAD support</td>
+        </tr>
+        <tr>
+          <td>Privately Owned, Customer-First</td>
+          <td class="osi-col"><span class="check">✅</span> No investors or quotas; we act quickly on your direction during emergencies</td>
+          <td><span class="cross">❌</span> Shareholder-driven priorities</td>
+          <td><span class="cross">❌</span> Private equity-owned; decisions driven by scale and investor ROI</td>
+        </tr>
+        <tr>
+          <td>Flexible and Empowered Support</td>
+          <td class="osi-col"><span class="check">✅</span> Customers shape their support model; dedicated team, tailored communication</td>
+          <td><span class="cross">❌</span> Generic contacts; limited attention unless a top-tier account</td>
+          <td><span class="cross">❌</span> Disjointed support teams; inconsistent response</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos-section">
+  <div class="container">
+    <p>Brands We Support</p>
+    <div class="logos-wrap">
+      <span class="logo-chip">INFINIDAT</span><span class="logo-chip">OPENGEAR</span>
+      <span class="logo-chip">EXTREME NETWORKS</span><span class="logo-chip">DELL EMC</span>
+      <span class="logo-chip">APC</span><span class="logo-chip">ARISTA</span>
+      <span class="logo-chip">LEGRAND</span><span class="logo-chip">VMware</span>
+      <span class="logo-chip">BROCADE</span><span class="logo-chip">NETGEAR</span>
+      <span class="logo-chip">SUN</span><span class="logo-chip">SUPERMICRO</span>
+      <span class="logo-chip">JUNIPER</span><span class="logo-chip">HPE</span>
+      <span class="logo-chip">HITACHI</span><span class="logo-chip">IBM</span>
+      <span class="logo-chip">LENOVO</span><span class="logo-chip">NETAPP</span>
+      <span class="logo-chip">NOKIA</span><span class="logo-chip">ORACLE</span>
+      <span class="logo-chip">FORTINET</span><span class="logo-chip">CISCO</span>
+    </div>
+  </div>
+</div>
+
+<!-- VENDOR CARDS — added from supported-equipment hub -->
+<section class="vendor-section">
+  <div class="container">
+    <h2 class="section-title">Supported Vendors</h2>
+    <p class="section-sub section-sub">Deep-dive pages for the brands we support most. Click any vendor to explore supported models, service details, and how Systain® compares to OEM coverage.</p>
+    <div class="vendors-grid">
+
+      <a href="dell-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">DELL</div>
+        <h3>Dell Maintenance</h3>
+        <p>PowerEdge servers, PowerStore &amp; PowerVault storage, PowerSwitch networking, VxRail HCI, and Data Domain.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Servers</span><span class="vendor-tag">Storage</span><span class="vendor-tag">Networking</span><span class="vendor-tag">HCI</span></div>
+        <div class="vendor-link">View supported Dell equipment &rarr;</div>
+      </a>
+
+      <a href="hpe-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">HPE</div>
+        <h3>HPE Maintenance</h3>
+        <p>ProLiant servers, Nimble &amp; 3PAR storage, Aruba networking, Synergy composable, and BladeSystem.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Servers</span><span class="vendor-tag">Storage</span><span class="vendor-tag">Networking</span></div>
+        <div class="vendor-link">View supported HPE equipment &rarr;</div>
+      </a>
+
+      <a href="cisco-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">CISCO</div>
+        <h3>Cisco Maintenance</h3>
+        <p>Catalyst &amp; Nexus switches, ISR &amp; ASR routers, Firepower security, UCS servers, and Meraki.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Networking</span><span class="vendor-tag">Security</span><span class="vendor-tag">Servers</span></div>
+        <div class="vendor-link">View supported Cisco equipment &rarr;</div>
+      </a>
+
+      <a href="supermicro-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">SUPERMICRO</div>
+        <h3>Supermicro Maintenance</h3>
+        <p>SuperServer, SuperStorage, SuperBlade, GPU servers, and embedded IoT platforms.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Servers</span><span class="vendor-tag">Storage</span><span class="vendor-tag">GPU</span></div>
+        <div class="vendor-link">View supported Supermicro equipment &rarr;</div>
+      </a>
+
+      <a href="juniper-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">JUNIPER</div>
+        <h3>Juniper Maintenance</h3>
+        <p>EX &amp; QFX switches, MX &amp; SRX routers, Apstra fabric management, and Mist AI.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Networking</span><span class="vendor-tag">Security</span></div>
+        <div class="vendor-link">View supported Juniper equipment &rarr;</div>
+      </a>
+
+      <a href="netapp-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">NetApp</div>
+        <h3>NetApp Maintenance</h3>
+        <p>FAS &amp; AFF arrays, ONTAP, E-Series, StorageGRID, and SolidFire.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Storage</span><span class="vendor-tag">Data Management</span></div>
+        <div class="vendor-link">View supported NetApp equipment &rarr;</div>
+      </a>
+
+      <a href="ibm-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">IBM</div>
+        <h3>IBM Maintenance</h3>
+        <p>Power Systems, FlashSystem &amp; Storwize storage, z Systems mainframes, and tape libraries.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Servers</span><span class="vendor-tag">Storage</span><span class="vendor-tag">Mainframe</span></div>
+        <div class="vendor-link">View supported IBM equipment &rarr;</div>
+      </a>
+
+      <a href="lenovo-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">LENOVO</div>
+        <h3>Lenovo Maintenance</h3>
+        <p>ThinkSystem servers, ThinkAgile HCI, DE &amp; DM storage, and RackSwitch networking.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Servers</span><span class="vendor-tag">Storage</span><span class="vendor-tag">HCI</span></div>
+        <div class="vendor-link">View supported Lenovo equipment &rarr;</div>
+      </a>
+
+      <a href="arista-tpm-landing.html" class="vendor-card">
+        <div class="vendor-logo-text">ARISTA</div>
+        <h3>Arista Maintenance</h3>
+        <p>7000 series data center switches, cognitive campus, and CloudVision management.</p>
+        <div class="vendor-tags"><span class="vendor-tag">Networking</span><span class="vendor-tag">Data Center</span></div>
+        <div class="vendor-link">View supported Arista equipment &rarr;</div>
+      </a>
+
+      <div class="more-oems-row">
+        <p>Plus <strong>15+ additional OEMs</strong></p>
+        <span class="oem-list">Extreme Networks &middot; Brocade &middot; APC &middot; VMware &middot; Infinidat &middot; NetGear &middot; Nokia &middot; Oracle &middot; Hitachi &middot; Quantum &middot; Fortinet &middot; Sun &middot; and more</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;margin-bottom:24px;">What Our Customers Are Saying</h2>
+    <div class="testi-inner">
+      <blockquote>"Even in a crowded TPM market, clients notice the OSI Global difference. The engineering team is responsive, the SLA flexibility is real, and the Systain portal keeps us in control of our infrastructure."</blockquote>
+      <cite>— Satisfied Customer, Enterprise IT Leader</cite>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="num">500+</div><div class="lbl">Satisfied Customers</div></div>
+      <div class="stat-item"><div class="num">50+</div><div class="lbl">Countries Serviced</div></div>
+      <div class="stat-item"><div class="num">18+</div><div class="lbl">Years Privately Held</div></div>
+      <div class="stat-item"><div class="num">99%+</div><div class="lbl">SLAs Met</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SYSTAIN PORTAL -->
+<section class="portal-section">
+  <div class="container">
+    <div class="portal-inner">
+      <div>
+        <div class="systain-logo-text" style="font-size:22px;margin-bottom:14px;">SYSTAIN®</div>
+        <h2>The Systain® Client Portal</h2>
+        <p>A centralized, easy-to-navigate resource that empowers our clients to take control of their IT needs.</p>
+        <ul class="portal-features">
+          <li>Manage &amp; implement support coverage for any product within your infrastructure</li>
+          <li>Seamlessly aggregate your Systain &amp; OEM vendor profiles, assets, and maintenance contracts</li>
+          <li>Search a cross-referenced repository of current, past, and available maintenance contracts</li>
+          <li>Set reminders on sun-setting coverage agreements and flag end-of-life &amp; last-day-of-support timelines</li>
+          <li>Vendor contract management — store &amp; update frontline tech support, ordering, fulfillment &amp; shipping contact info</li>
+        </ul>
+      </div>
+      <div class="portal-img">
+        <img src="https://osiglobal.com/wp-content/uploads/2024/08/Systain-Portal.png" alt="Systain Portal" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title">SYSTAIN® Third Party Maintenance FAQs</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>What is Systain® Third-Party Maintenance (TPM)?</h4>
+        <p>Systain® is OSI Global's third-party maintenance service that provides expert support for networking, server, and storage infrastructure — helping organizations extend hardware life and reduce reliance on OEM contracts.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can OSI Global Systain® replace OEM support for Cisco, Dell, Supermicro, Juniper, and other major vendors?</h4>
+        <p>Yes. OSI Global Systain® is designed to support enterprise hardware from major vendors, including environments where OEM support is no longer cost-effective or has reached end of life (EOL).</p>
+      </div>
+      <div class="faq-item">
+        <h4>Does OSI Global Systain® support End-of-Life (EOL) and End-of-Support (EOS) equipment?</h4>
+        <p>Yes. OSI Global Systain includes EOL and EOS hardware support, allowing organizations to keep existing infrastructure running reliably without forced refresh cycles.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What SLA options are available with OSI Global Systain®?</h4>
+        <p>OSI Global Systain® offers flexible SLA options, including Next Business Day (NBD), 4-hour response, and 4-hour response with on-site technician services — depending on coverage needs and location.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is 24/7 support included with OSI Global Systain®?</h4>
+        <p>Yes. OSI Global Systain® provides 24x7x365 TAC coverage to support mission-critical environments at any time.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Who provides technical support for OSI Global Systain®?</h4>
+        <p>Support requests are handled by experienced Level 2 and Level 3 engineers, backed by an accelerated escalation process. At OSI Global, you get real humans to talk to — no wasted time with L1 scripted support.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Does OSI Global Systain® include hardware replacement services?</h4>
+        <p>Yes. Hardware replacement is included to help minimize downtime when component failures occur, backed by our industry-leading SLAs.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How does OSI Global Systain® help organizations reduce infrastructure costs?</h4>
+        <p>By extending hardware lifespan, supporting EOL equipment, and offering flexible SLAs, OSI Global Systain® helps organizations reduce maintenance spend and avoid unnecessary capital refreshes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="cta-section" id="contactus">
+  <div class="container">
+    <h2>Experience the OSI Global Service Difference</h2>
+    <p>Stop overpaying and settling for less than you deserve. Let's talk Third Party Maintenance the way it should be: smart, flexible, and built around you.</p>
+    <a href="https://osiglobal.com/get-a-quote" class="btn-white">Contact Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-text">OSI <span>Global</span></div>
+        <p>OSI Global is a privately owned, Gartner-recognized leader in enterprise hardware, optical solutions, and data center services. Since 2008, OSI Global has been giving IT teams around the world peace of mind through innovative, cost-effective solutions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hardware Sales</h4>
+        <ul>
+          <li><a href="https://osiglobal.com/osi-hardware/#server-hardware">Server Hardware</a></li>
+          <li><a href="https://osiglobal.com/osi-hardware/#storage-hardware">Storage Hardware</a></li>
+          <li><a href="https://osiglobal.com/osi-hardware/#networking-hardware">Networking Hardware</a></li>
+          <li><a href="https://osiglobal.com/hardware-catalog/">Hardware Catalog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Optical Solutions</h4>
+        <ul>
+          <li><a href="https://osiglobal.com/optical-solutions/#optical-transceivers">Optical Transceivers</a></li>
+          <li><a href="https://osiglobal.com/optical-solutions/#open-line-systems">Open Line Systems</a></li>
+          <li><a href="https://osiglobal.com/optical-solutions/#cabling-solutions">Cabling Solutions</a></li>
+          <li><a href="https://osiglobal.com/optics-search/">Optic Search</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@osiglobal.com">info@osiglobal.com</a></li>
+          <li><a href="#">606 Olive Street, Santa Barbara, CA 93101</a></li>
+          <li><a href="tel:+18666024674">+1 (866) 602-4674</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 OSI Global. All rights reserved.</span>
+      <div>
+        <a href="https://osiglobal.com/privacy-policy/">Privacy Policy</a>
+        <a href="https://osiglobal.com/terms-and-conditions/">Terms and Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
