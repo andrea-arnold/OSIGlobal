@@ -62,23 +62,9 @@
     z-index: 20;
   }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-  .logo { display: flex; flex-direction: column; }
-  .logo-word { display: flex; align-items: flex-end; }
-  .logo-word span.logo-s, .logo-word span.logo-stain {
-    font-family: 'Mukta', sans-serif;
-    font-weight: 800;
-    font-size: 28px;
-    color: var(--ink);
-    line-height: 0.8;
-    letter-spacing: -0.01em;
-  }
-  .logo-bars { display: flex; align-items: flex-end; gap: 3px; height: 24px; margin: 0 3px 0 1px; }
-  .logo-bars .bar { width: 6px; border-radius: 5px; }
-  .logo-bars .bar1 { height: 52%; background: linear-gradient(180deg, var(--green-light) 0%, var(--green) 100%); }
-  .logo-bars .bar2 { height: 100%; background: linear-gradient(180deg, var(--green-light) 0%, var(--green) 100%); }
-  .logo-bars .bar3 { height: 74%; background: linear-gradient(180deg, var(--green-light) 0%, var(--green) 100%); }
-  .logo-bars .bar4 { height: 60%; background: linear-gradient(180deg, var(--green-light) 0%, var(--green-dark) 100%); }
-  .logo-tagline { align-self: flex-end; font-size: 11px; font-weight: 500; color: var(--gray-text); margin-top: 3px; }
+  .logo { display: flex; align-items: center; }
+  .logo img { display: block; height: 36px; width: auto; }
+  .footer-logo img { display: block; height: 40px; width: auto; }
   .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
   .nav-links a { color: var(--ink); font-weight: 600; font-size: 15px; }
   .nav-actions { display: flex; gap: 12px; align-items: center; }
@@ -364,17 +350,7 @@
 <header class="nav">
   <div class="wrap">
     <div class="logo">
-      <div class="logo-word">
-        <span class="logo-s">s</span>
-        <span class="logo-bars">
-          <span class="bar bar1"></span>
-          <span class="bar bar2"></span>
-          <span class="bar bar3"></span>
-          <span class="bar bar4"></span>
-        </span>
-        <span class="logo-stain">stain</span>
-      </div>
-      <div class="logo-tagline">an OSI Global Service</div>
+      <img src="systain-logo.png" alt="Systain, an OSI Global Service">
     </div>
     <ul class="nav-links">
       <li><a href="#benefits">Benefits</a></li>
@@ -683,18 +659,8 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="logo">
-          <div class="logo-word">
-            <span class="logo-s">s</span>
-            <span class="logo-bars">
-              <span class="bar bar1"></span>
-              <span class="bar bar2"></span>
-              <span class="bar bar3"></span>
-              <span class="bar bar4"></span>
-            </span>
-            <span class="logo-stain">stain</span>
-          </div>
-          <div class="logo-tagline">an OSI Global Service</div>
+        <div class="logo footer-logo">
+          <img src="systain-logo.png" alt="Systain, an OSI Global Service">
         </div>
       </div>
       <div>
