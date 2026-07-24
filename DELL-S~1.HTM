@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server Request for Quote | OSI Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #141414;
+    --off-white: #f6f6f6;
+    --green: #0f8140;
+    --green-dark: #0c6633;
+    --lime: #8dc63f;
+    --gray: #666666;
+    --white: #ffffff;
+    --black: #000000;
+    --border: #e0e0e0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Mukta', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--off-white);
+    color: var(--ink);
+  }
+  .top-bar {
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .top-bar img.logo {
+    height: 30px;
+    display: block;
+  }
+  .top-bar .portal-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--lime);
+  }
+  .header {
+    position: relative;
+    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1584169417032-d34e8d805e8b?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 64px 32px 56px;
+    text-align: center;
+  }
+  .header h1 {
+    margin: 0 0 12px;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  .header p {
+    margin: 0 auto;
+    max-width: 640px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ececec;
+  }
+  .container {
+    max-width: 800px;
+    margin: -36px auto 60px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 40px;
+    position: relative;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--gray);
+    margin: 0 0 20px;
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 36px;
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .field-row.full { grid-template-columns: 1fr; }
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  label .req { color: #c0392b; }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+    background: var(--white);
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(15,129,64,0.15);
+  }
+  .server-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+  }
+  .server-table th {
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    border-bottom: 2px solid var(--border);
+    padding: 0 0 10px;
+  }
+  .server-table td {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .server-name {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  .qty-input {
+    width: 90px;
+    text-align: center;
+  }
+  .notes-area {
+    width: 100%;
+    min-height: 90px;
+    resize: vertical;
+  }
+  .submit-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  button.submit-btn {
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 13px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  button.submit-btn:hover { background: var(--green-dark); }
+  .disclaimer {
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .error-msg {
+    display: none;
+    background: #fdecea;
+    border: 1px solid #f2b8b5;
+    color: #a12622;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .error-msg.visible { display: block; }
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,20,20,0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.visible {
+    display: flex;
+  }
+  .modal-box {
+    background: var(--white);
+    border-radius: 10px;
+    max-width: 420px;
+    width: 100%;
+    padding: 36px 32px 32px;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  }
+  .modal-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 auto 18px;
+  }
+  .modal-box p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 24px;
+  }
+  .modal-box button {
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 11px 26px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .modal-box button:hover { background: var(--green-dark); }
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    padding: 0 32px 40px;
+  }
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; }
+    .container { padding: 26px; margin-top: -24px; }
+    .header { padding: 48px 20px 44px; }
+    .header h1 { font-size: 25px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <img class="logo" src="https://osiglobal.com/_astro/OSI-logo-light-1.DsGGxEal.png" alt="OSI Global">
+    <div class="portal-label">Appgate Customer Portal</div>
+  </div>
+
+  <div class="header">
+    <h1>Server Request for Quote</h1>
+    <p>Complete the form below to request pricing for your server hardware. Once submitted, our team will follow up with a quote and coordinate delivery and software deployment with your partner contact.</p>
+  </div>
+
+  <div class="container">
+
+    <div id="errorMsg" class="error-msg">
+      Please select a quantity of at least 1 for one or more servers before submitting.
+    </div>
+
+    <form id="orderForm" novalidate>
+
+      <fieldset>
+        <p class="section-title">End Customer Information</p>
+        <p class="section-sub">Who is this request for, and where should the hardware be delivered?</p>
+
+        <div class="field-row full">
+          <div class="field">
+            <label for="company">Company <span class="req">*</span></label>
+            <input type="text" id="company" name="company" required>
+          </div>
+        </div>
+
+        <div class="field-row full">
+          <div class="field">
+            <label for="address1">Address Line 1 <span class="req">*</span></label>
+            <input type="text" id="address1" name="address1" required>
+          </div>
+        </div>
+
+        <div class="field-row full">
+          <div class="field">
+            <label for="address2">Address Line 2</label>
+            <input type="text" id="address2" name="address2">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="city">City <span class="req">*</span></label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          <div class="field">
+            <label for="state">State <span class="req">*</span></label>
+            <input type="text" id="state" name="state" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="postalCode">Postal Code <span class="req">*</span></label>
+            <input type="text" id="postalCode" name="postalCode" required>
+          </div>
+          <div class="field">
+            <label for="country">Country <span class="req">*</span></label>
+            <input type="text" id="country" name="country" required value="United States">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="contact">Contact <span class="req">*</span></label>
+            <input type="text" id="contact" name="contact" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+        </div>
+
+        <div class="field-row full">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <p class="section-title">Select Your Servers</p>
+        <p class="section-sub">Enter the quantity for each server model you'd like quoted.</p>
+
+        <table class="server-table">
+          <thead>
+            <tr>
+              <th>Server Model</th>
+              <th style="text-align:right;">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="server-name">AX-J</span></td>
+              <td style="text-align:right;"><input type="number" class="qty-input" name="qty_AX-J" min="0" step="1" value="0"></td>
+            </tr>
+            <tr>
+              <td><span class="server-name">AX-G7</span></td>
+              <td style="text-align:right;"><input type="number" class="qty-input" name="qty_AX-G7" min="0" step="1" value="0"></td>
+            </tr>
+            <tr>
+              <td><span class="server-name">AX-H5</span></td>
+              <td style="text-align:right;"><input type="number" class="qty-input" name="qty_AX-H5" min="0" step="1" value="0"></td>
+            </tr>
+            <tr>
+              <td><span class="server-name">AX-M2</span></td>
+              <td style="text-align:right;"><input type="number" class="qty-input" name="qty_AX-M2" min="0" step="1" value="0"></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+
+      <fieldset>
+        <p class="section-title">Additional Notes</p>
+        <p class="section-sub">Optional — special delivery instructions, configuration requests, etc.</p>
+        <textarea class="notes-area" name="notes" placeholder="Anything else we should know?"></textarea>
+      </fieldset>
+
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Request Quote</button>
+        <span class="disclaimer">By submitting, you agree that OSI Global may contact you to provide pricing and confirm details.</span>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 OSI Global. This request form is provided on behalf of our partner, Appgate, for hardware quoting and fulfillment.
+  </div>
+
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-icon">&#10003;</div>
+      <p><strong>Success!</strong> Your form has been submitted and OSI Global will reach out to you ASAP.</p>
+      <button type="button" id="successModalClose">Close</button>
+    </div>
+  </div>
+
+<script>
+  // NOTE FOR DEVELOPER: Replace SUBMIT_ENDPOINT below with the real backend
+  // route once it's built (see hubspot-integration-spec.md). That route should
+  // upsert the HubSpot contact and log the Note, then return a JSON response
+  // like { success: true } or { success: false, message: "..." }.
+  // The success popup below only appears after that response comes back —
+  // it does NOT fire optimistically on click.
+  var SUBMIT_ENDPOINT = '/api/submit-quote';
+
+  var form = document.getElementById('orderForm');
+  var errorMsg = document.getElementById('errorMsg');
+  var successModal = document.getElementById('successModal');
+  var submitBtn = form.querySelector('.submit-btn');
+
+  function showSuccessModal() {
+    successModal.classList.add('visible');
+  }
+
+  function hideSuccessModal() {
+    successModal.classList.remove('visible');
+  }
+
+  document.getElementById('successModalClose').addEventListener('click', hideSuccessModal);
+  successModal.addEventListener('click', function (e) {
+    if (e.target === successModal) hideSuccessModal();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var qtyInputs = document.querySelectorAll('.qty-input');
+    var totalQty = 0;
+    qtyInputs.forEach(function (input) {
+      totalQty += parseInt(input.value || '0', 10);
+    });
+
+    if (totalQty < 1) {
+      errorMsg.textContent = 'Please select a quantity of at least 1 for one or more servers before submitting.';
+      errorMsg.classList.add('visible');
+      return;
+    }
+
+    errorMsg.classList.remove('visible');
+
+    var formData = new FormData(this);
+    var quotePayload = {};
+    formData.forEach(function (value, key) { quotePayload[key] = value; });
+
+    var formEl = this;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch(SUBMIT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(quotePayload)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed');
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.success === false) throw new Error(data.message || 'Submission failed');
+        showSuccessModal();
+        formEl.reset();
+        document.getElementById('country').value = 'United States';
+      })
+      .catch(function () {
+        errorMsg.textContent = 'Something went wrong submitting your request. Please try again, or contact us directly.';
+        errorMsg.classList.add('visible');
+        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Quote';
+      });
+  });
+</script>
+
+</body>
+</html>
